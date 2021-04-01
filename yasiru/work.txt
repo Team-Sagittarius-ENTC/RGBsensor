@@ -1,1 +1,13 @@
 This folder is for yasiru
+=========================
+
+
+Added links for Notation
+------------------------
+
+1) Great scott PWM
+	https://www.youtube.com/watch?v=EVm0qVJ56II
+
+2) Ben eater timing clock
+	https://www.youtube.com/watch?v=kRlSFm519Bo&list=PLowKtXNTBypGqImE405J2565dvjafglHU&index=2
+
