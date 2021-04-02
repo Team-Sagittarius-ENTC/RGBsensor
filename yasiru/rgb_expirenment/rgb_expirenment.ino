@@ -1,18 +1,28 @@
+/*
+  Team Horizon
+
+  Program Date    : 2nd April 2021
+  Program version : 1.0.0
+*/
+
+
+// Define variables for LED handling
 #define ledClk 2
 #define ledPwm 10
 
+// These are the global variables for functions
 int color[3] = {134,32,200};
 size_t i;
 
 void setup(){
+  // Set pinModes
   pinMode(ledClk, OUTPUT);
   pinMode(ledPwm, OUTPUT);
-  setColor();
-}
+}// end of the void setup
 
 void loop(){
   lightLed();
-}
+}// end of the void loop function
 
 
 void setColor(){
