@@ -5,13 +5,17 @@
   Program version : 1.0.0
 */
 
+//#include "U8glib.h"
+
+// initialize the lcd screen
+//U8GLIB_ST7920_128X64 u8g(13,11,10, U8G_PIN_NONE);
 
 // Define variables for LED handling
 #define ledClk 2
-#define ledPwm 10
+#define ledPwm 9
 
 // These are the global variables for functions
-int color[3] = {134,32,200};
+int color[3] = {128,255,100};
 size_t i;
 
 void setup(){
