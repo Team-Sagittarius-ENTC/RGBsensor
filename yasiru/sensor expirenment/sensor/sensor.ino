@@ -46,14 +46,6 @@ void loop(){
   sendBT(); // output data using blutooth
 }// end of void loop
 
-
-
-
-
-
-
-
-
 void sendBT(){
   Serial.print(color[0]);
   Serial.print(",");
