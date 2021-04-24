@@ -6,10 +6,10 @@ LiquidCrystal lcd(2,3,4,5,6,7);
 // these variables are or the sensor reading process
 const int ldrPins[3] = {A0, A1, A2};
 short color[3] = {};
-double ratio[3] = {};
+double ratio[3] = {1,1,1};
 
 // these values are only for testing
-short LM[2][3] = {{14, 0, 0}, {431, 203, 318}};
+short LM[2][3] = {{}, {1023, 1023, 1023}};
 
 void readColor(bool calibrate = false){
   // declaring a variable to get the average
@@ -26,8 +26,7 @@ void readColor(bool calibrate = false){
   // now get the average
   for (size_t i = 0; i < 3; ++i){
     if (calibrate){
-      color[i] = holder[i] / 10;
-      color[i] = int(map(color[i], LM[0][i], LM[1][i], 10, 245));
+      color[i] = holder[i] / 10 * ratio[i];
     }else{
       color[i] = (holder[i] / 10) * ratio[i];
       color[i] = int(map(color[i], LM[0][i], LM[1][i], 10, 245));
@@ -40,6 +39,12 @@ void calibrate(){
   double average = {};
   for (size_t i = 0; i < 3; ++i) average += (float(color[i])/3);
   for (size_t i = 0; i < 3; ++i) ratio[i] = average / color[i];
+
+  // then assign that value to minimum of LM
+  readColor(true);
+  for (short i = 0; i < 3; ++i)
+    LM[0][i] = color[i];
+  
 }// end of calibration
 
 void sendBT(){
