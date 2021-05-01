@@ -6,21 +6,27 @@
   Programmed By: Yasiru Senerath karunanayaka 190301H
 */
 
-#ifndef RGBsensor
-#define RGBsensor
+#ifndef RGBsensorFunctions
+#define RGBsensorFunctions
 
-class Sensor{
+#include <Arduino.h>
+
+// this is the main class for the RGB sensor
+class RGBsensor{
   private:
-    const int ldrPins[3] {};
-    double ratio[3] {};
-    short LM[2][3] {};
+    byte Sensor[3]{}; // this is the RGB ldr pins
+    byte color[3]{};
+    byte ratio[3]{};
+    byte LM[2][3]{};
     
   public:
-    int * readColor(bool calibrate);
-    void calibrate();
+    RGBsensor(byte tSensor[]); // this is the constructor for the sensor
+    
+    byte *readColor(bool calibrate = false); //this is the read colot method
 
-    // This is the constructor for the class
-    Sensor(double *tratio, short **tLM);
-};// end of the Sensor class
+    void calibrate();
+    
+    void displayColor(byte tcolor[]); // this function will display the color in the serial monitor
+}; // end of the RGBsensor Class
 
 #endif
