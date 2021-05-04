@@ -11,18 +11,33 @@
 
 // Constructor for the sensor
 RGBsensor::RGBsensor(byte tSensor[]){
+  /*
+    This is the function for initialize the sensor. tSensor variable is an array passed by
+    user when creating the instance. those are the RGB ldr pins.
+  */
   // connect the sensor and initialize
   for (byte i = 0; i < 3; ++i) Sensor[i] = tSensor[i];
 }// end of constructor
 
 //Regression processor
 void RGBsensor::procRegression(int16_t avg){
+  /*
+    This function will take global regression constants.
+    Will return calculated RGB values for given average value
+    This function will used to find optimized regression constants
+  */
   // set color to calculated regressions
-  // red = RGC[0][0] * pow(avg + RGC[0][1], RGC[0][2]) + RCONSTS[0]
   for(byte i = 0; i < 3; ++i)color[i] = RGC[i][0] * pow(avg + RGC[i][1], RGC[i][2]) + RCONSTS[i];
 }//end of regressingpric
 
 void RGBsensor::inverseRegression(){
+  /*
+    This is the function to do the reverse of procRegression function.
+    This function will find the corresponting average value it came from using readed value
+    The function will take the values in color variable and replace it with
+    the result by inverse regression
+  */
+  
   for (byte i = 0; i < 3; ++i){
     color[i] = pow( (double(color[i]) - RCONSTS[i]) / RGC[i][0], 1 / RGC[i][2] ) - RGC[i][1];
   }
@@ -30,6 +45,16 @@ void RGBsensor::inverseRegression(){
 
 // Sensor read color method
 int *RGBsensor::readColor(bool calibrate = false){
+  /*
+    This is a public function.
+    This function will read the color and do all processing and return final color to
+    the user
+
+    calibrate : set this to true if you want to get readings without any processing
+              : set this to false if want with all processing
+  */
+
+  // to increase the sensiviry of green and blue increase multiply it with a scalar
   float ratio[3] {1, 1.13517, 1.19640};
   for(byte i = 0; i < 3; ++i) color[i] = analogRead(Sensor[i]) * ratio[i]; // reading the raw color
 
@@ -55,27 +80,26 @@ int *RGBsensor::readColor(bool calibrate = false){
 
 // Sensor print color method
 void RGBsensor::displayColor(int *tcolor){
+  /*
+    In various times we want to display the readed color.
+    By calling this function we can show the values in color variable
+  */
   for(byte i = 0; i < 3; ++i) {
     Serial.print(tcolor[i]);
     Serial.print(i == 2 ? "\n" : ",");
   }
 }// end of the displayColor method
 
-void RGBsensor::doSomething(){
-  procRegression(400);
-  displayColor(color);
-  inverseRegression();
-  displayColor(color);
-  calibrate();
-  procRegression(400);
-  inverseRegression();
-  displayColor(color);
-  
-}
-
 // Sensor Calibration Method
-void RGBsensor::calibrate(){
-  /*First of all get all */
+void RGBsensor::calibrate(bool compare = false){
+
+  /*
+    * This is the main function in reading process
+    * This function will do some processing and find optimised vertical RCONST for equation
+    * We can read color without calibrating too. Because we have already found the constants.
+    * this function will only optimize those for the environment
+    * compare: set this to true if you want regression process data
+  */
   
   #define SAMPLING_SPACE 10 // this will be the sampling space
   int16_t samples[50][4]{}; // this array will contain the samples of the ldr
@@ -88,7 +112,8 @@ void RGBsensor::calibrate(){
       samples[0][3] = float(color[0] + color[1] + color[2]) / 3;
     } //if this loop running for the first time
     else{
-
+      // since we need to reject near values and get other we need infintie loop
+      // and breck it if we got a reading
       while (true){
         readColor(true); // read the color
         // take the average of the color
@@ -109,14 +134,17 @@ void RGBsensor::calibrate(){
     Serial.println("%");
   }//end of filling for loop
 
-  for(byte i = 0; i < 50; ++i){
-  Serial.print("[");
-  for(byte j = 0; j < 4; ++j){
-    Serial.print(samples[i][j]);
-    Serial.print(j == 3 ? "" : ", ");
-  }
-  Serial.println("],");
-  }
+  if(compare){
+    for(byte i = 0; i < 50; ++i){
+      Serial.print("[");
+      for(byte j = 0; j < 4; ++j){
+        Serial.print(samples[i][j]);
+        Serial.print(j == 3 ? "" : ", ");
+      }
+      Serial.println("],");
+    }
+  }// end of if
+  
   
 
   // OK now we have to find the corect regression constants
@@ -133,16 +161,19 @@ void RGBsensor::calibrate(){
     }
   }// end of for loop
 
-  Serial.println("\n\n------------------------------------------\n\n");
 
-  for(byte i = 0; i < 50; ++i){
-  Serial.print("[");
-  for(byte j = 0; j < 4; ++j){
-    Serial.print(samples[i][j]);
-    Serial.print(j == 3 ? "" : ", ");
-  }
-  Serial.println("],");
-  }
+  if(compare){
+    Serial.println("\n\n------------------------------------------\n\n");
+    for(byte i = 0; i < 50; ++i){
+      Serial.print("[");
+      for(byte j = 0; j < 4; ++j){
+        Serial.print(samples[i][j]);
+        Serial.print(j == 3 ? "" : ", ");
+      }
+      Serial.println("],");
+    }
+  }// end of if
+  
 
   //correct the regression constant
   for(byte i = 0; i < 3; ++i) RCONSTS[i] += double(samples[0][i]) / 3;
