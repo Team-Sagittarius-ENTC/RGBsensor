@@ -22,7 +22,7 @@ class RGBsensor{
       { 0.013065432118179211 , 1335.9090733992175  , 1.5}, // for green
       { 0.3260776975740072   , -188.96905355531214 , 1.2}, // for blue
     };
-    double RCONSTS[3] = { -6646.2939872758525 , -486.6226029668186 , 56.54299632875735 }; // vertical adjustment
+    double RCONSTS[3] = { -6626.2939872758525 , -486.6226029668186 , 56.54299632875735 }; // vertical adjustment
 
     
     void procRegression(int16_t avg);

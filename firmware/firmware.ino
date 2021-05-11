@@ -1,4 +1,4 @@
-#include "RGBsensor.h"
+ #include "RGBsensor.h"
 
 byte ldrPins[3] = {A2, A1, A0};
 int *color {nullptr};
