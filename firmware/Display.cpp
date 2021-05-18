@@ -17,14 +17,17 @@
 
 LiquidCrystal_I2C  lcd(0x27, 16, 2);
 
-void initLCD(){
-  lcd,begin();
+//Constructor for Display
+Display::Display(){
+  lcd.init();
   lcd.backlight();
 }
 
-void printMsg(String message, int delay_ = 1000){
+void printMsg(String message1, String message2 = "", int delay_ = 1000){
   lcd.clear();
-  lcd.print(message);
+  lcd.print(message1);
+  lcd.setCursor (0,1);  //go to the start of 2nd line
+  lcd.print(message2);
   delay(delay_);
   lcd.clear();
 }
