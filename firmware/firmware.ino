@@ -16,16 +16,8 @@ void setup(){
 
 void loop(){
   
-   litRGB();
+
 
 
   
 }// end of the void loop function
-
-void litRGB(){
-  for (byte i = 0; i < 3; ++i){
-    PORTB = (PORTB & B11111100) | i;
-    delay(500);
-  }
-  
-}// end of the function
