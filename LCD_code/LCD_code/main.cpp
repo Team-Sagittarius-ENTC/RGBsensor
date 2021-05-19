@@ -6,8 +6,10 @@
  */ 
 
 #define F_CPU 16000000UL
+
 #include <util/delay.h>
 #include <avr/io.h>
+
 
 void toggleEnable(){
 	//toggling Enable
@@ -40,7 +42,8 @@ void initLCD(){
 void print(const char Message[], uint8_t size_){
 	//writing data
 	PORTC &= 0b11111000;
-	PORTC |= 0b00000001;
+	PORTC |= 0b00000001; //register select 1
+	
 	for(uint8_t i = 0; i < size_; ++i ){
 		PORTB = Message[i];
 		toggleEnable();
@@ -67,14 +70,20 @@ int main(void)
 	DDRC |= 0b00000111;
 	
 	
+	
+	
 	// initializing the display
 	initLCD();
 	
-	setCursor(5, 0);
-	print("Yasiru", 6);
+	setCursor(2, 0);
+	print("Hello There", 6);
 	
-	_delay_ms(1000);
-	clear();S
+	_delay_ms(2000);
+	clear();
+	
+	setCursor(0, 1);
+	print("Good Bye", 8);
+	
 	
 	while(1){}
 }// end of the main program

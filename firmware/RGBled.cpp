@@ -4,6 +4,9 @@ RGBled::RGBled()
 {
   //setting B:0,1,2 to output
   DDRB |= ((1<<PORTB0) | (1<<PORTB1) | (1<<PORTB2));
+
+  // now initialize the timers and timer registers
+  initRGB();
 }
 void RGBled::initRGB()
   {
