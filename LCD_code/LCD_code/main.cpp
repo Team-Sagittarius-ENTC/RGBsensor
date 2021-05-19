@@ -82,7 +82,7 @@ int main(void)
 	clear();
 	
 	setCursor(0, 1);
-	print("Good Bye");
+	print("Good Bye", 8);
 	
 	
 	while(1){}
