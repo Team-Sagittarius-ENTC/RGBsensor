@@ -10,18 +10,32 @@
 #define DisplayFunctions
 
 #include <Arduino.h>
-
+#include <LiquidCrystal.h>
+#include "keypad.h"
 
 class Display{
-  private:
+    private:
+      LiquidCrystal lcd = LiquidCrystal(2,3,4,5,6,7);
+      int  color[3]{};
+      byte keypadPin;
+      String tempInput = "";
+      Keypad keypad = Keypad(A0);
 
-  public:
-    //constructor for the class
-    Display();
-    
-    void printMsg(String message1, String message2 = "", int delay_ = 1000);
+      int inputColor();
+      
+    public:
+      //define the constructor
+      Display(byte pin);
 
-  
+      // Define public messages
+      void printMsg(String message, byte alignment = 0, bool line = 0);
+      int inputColor(byte positionx, byte positiony);
+
+      // define menus
+      void printMainMenu();
+      void printSensorMenu();
+      void printRGBMenu();
+      void colorInputDisplay();
 };
 
 #endif
