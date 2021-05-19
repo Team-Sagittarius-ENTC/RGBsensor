@@ -65,13 +65,25 @@ int Display::inputColor(byte positionx, byte positiony){
   String letter;
 
   while (true){
-    letter = keypad.get_keys(); // get a keystroke
-    lcd.print(keypad.get_keys());
+    letter = keypad.get_keys(); 
+    
     if(letter == "*"){
       // Accept the given value
       // Now we have to check for the errors
       if (tempInput.toInt() > 255){
         // clear the whole value
+        lcd.setCursor(positionx, positiony);
+        for(byte i = 0; i < tempInput.length(); ++i) lcd.print(" ");
+
+        // print the error message
+        lcd.setCursor(positionx, positiony);
+        lcd.print("ERR");
+        delay(500); // wait until user sees it
+        
+        lcd.setCursor(positionx, positiony); // going back again
+        lcd.print("   ");
+
+        lcd.setCursor(positionx, positiony);
         tempInput = "";
       }else{
         return tempInput.toInt();
@@ -94,11 +106,34 @@ int Display::inputColor(byte positionx, byte positiony){
   }// end of the while loop
 }// end of the input color function
 
-void Display::colorInputDisplay(){
+int* Display::colorInputDisplay(){
   lcd.clear();
   lcd.print("R: ");
   lcd.blink();
-  inputColor(3, 0);
-  
-  
+  color[0] = inputColor(3, 0);
+
+  lcd.setCursor(8, 0);
+  lcd.print("G: ");
+  lcd.blink();
+  color[1] = inputColor(11, 0);
+
+  lcd.setCursor(0, 1);
+  lcd.print("B: ");
+  lcd.blink();
+  color[2] = inputColor(3, 1);
+  lcd.noBlink();
+
+  lcd.setCursor(8, 1);
+  lcd.print("Done!");
+
+  delay(1000);
+  lcd.clear();
+
+  lcd.print("Lighting RGB ->");
+  lcd.setCursor(0,1);
+  lcd.print("#");
+  for(byte i = 0; i < 3; ++i) lcd.print(color[i], HEX);
+
+  delay(2000);
+  return color;
 }

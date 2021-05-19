@@ -56,8 +56,8 @@ void loop(){
       Lcd.printRGBMenu();
       switch(keypad.get_keys().toInt()){
         case 1:
-          Lcd.colorInputDisplay();
-          while(1);
+          color = Lcd.colorInputDisplay(); // inputing the color from the keypad
+          
         break;
 
         case 2:

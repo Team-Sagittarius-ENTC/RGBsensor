@@ -19,7 +19,7 @@ class Display{
       int  color[3]{};
       byte keypadPin;
       String tempInput = "";
-      Keypad keypad = Keypad(A0);
+      Keypad keypad = Keypad(A3);
 
       int inputColor();
       
@@ -35,7 +35,7 @@ class Display{
       void printMainMenu();
       void printSensorMenu();
       void printRGBMenu();
-      void colorInputDisplay();
+      int* colorInputDisplay();
 };
 
 #endif

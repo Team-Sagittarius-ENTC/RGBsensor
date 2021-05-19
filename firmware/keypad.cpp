@@ -46,9 +46,13 @@ void Keypad::decode_(){
 String Keypad::get_keys(byte length_ = 1){
   inputString = ""; // empty the input string
   while (inputString.length() < length_){
-    keypad = analogRead(key);
-    if (keypad>0){
+
+    keypad = analogRead(A3);
+    delay(1);
+
+    if (keypad > 0){
       decode_();
+      // remember to ad a delay
       while (analogRead(key)>0){}
     }
   }// end of main while loop

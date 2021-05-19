@@ -17,7 +17,7 @@ class RGBsensor{
     byte Sensor[3]{}; // this is the RGB ldr pins
     int  color[3]{};  // this is the ptr array to process all the color data
     
-    const double PROGMEM RGC[3][3]{ //regression constants
+    PROGMEM const double RGC[3][3]{ //regression constants
       { 3714.2750367674116   , 281.9907034616211   , 0.1}, // for red
       { 0.013065432118179211 , 1335.9090733992175  , 1.5}, // for green
       { 0.3260776975740072   , -188.96905355531214 , 1.2} // for blue
