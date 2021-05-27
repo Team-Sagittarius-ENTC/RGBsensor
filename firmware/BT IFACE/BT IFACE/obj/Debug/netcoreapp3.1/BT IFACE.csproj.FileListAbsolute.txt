@@ -1,0 +1,15 @@
+E:\UOM Projects\Lab Project 1\RGBsensor\firmware\BT IFACE\BT IFACE\bin\Debug\netcoreapp3.1\BT IFACE.exe
+E:\UOM Projects\Lab Project 1\RGBsensor\firmware\BT IFACE\BT IFACE\bin\Debug\netcoreapp3.1\BT IFACE.deps.json
+E:\UOM Projects\Lab Project 1\RGBsensor\firmware\BT IFACE\BT IFACE\bin\Debug\netcoreapp3.1\BT IFACE.runtimeconfig.json
+E:\UOM Projects\Lab Project 1\RGBsensor\firmware\BT IFACE\BT IFACE\bin\Debug\netcoreapp3.1\BT IFACE.runtimeconfig.dev.json
+E:\UOM Projects\Lab Project 1\RGBsensor\firmware\BT IFACE\BT IFACE\bin\Debug\netcoreapp3.1\BT IFACE.dll
+E:\UOM Projects\Lab Project 1\RGBsensor\firmware\BT IFACE\BT IFACE\bin\Debug\netcoreapp3.1\BT IFACE.pdb
+E:\UOM Projects\Lab Project 1\RGBsensor\firmware\BT IFACE\BT IFACE\obj\Debug\netcoreapp3.1\BT_IFACE.Form1.resources
+E:\UOM Projects\Lab Project 1\RGBsensor\firmware\BT IFACE\BT IFACE\obj\Debug\netcoreapp3.1\BT IFACE.csproj.GenerateResource.cache
+E:\UOM Projects\Lab Project 1\RGBsensor\firmware\BT IFACE\BT IFACE\obj\Debug\netcoreapp3.1\BT IFACE.AssemblyInfoInputs.cache
+E:\UOM Projects\Lab Project 1\RGBsensor\firmware\BT IFACE\BT IFACE\obj\Debug\netcoreapp3.1\BT IFACE.AssemblyInfo.cs
+E:\UOM Projects\Lab Project 1\RGBsensor\firmware\BT IFACE\BT IFACE\obj\Debug\netcoreapp3.1\BT IFACE.csproj.CoreCompileInputs.cache
+E:\UOM Projects\Lab Project 1\RGBsensor\firmware\BT IFACE\BT IFACE\obj\Debug\netcoreapp3.1\BT IFACE.dll
+E:\UOM Projects\Lab Project 1\RGBsensor\firmware\BT IFACE\BT IFACE\obj\Debug\netcoreapp3.1\BT IFACE.pdb
+E:\UOM Projects\Lab Project 1\RGBsensor\firmware\BT IFACE\BT IFACE\obj\Debug\netcoreapp3.1\BT IFACE.genruntimeconfig.cache
+E:\UOM Projects\Lab Project 1\RGBsensor\firmware\BT IFACE\BT IFACE\obj\Debug\netcoreapp3.1\BT_IFACE.Properties.Resources.resources

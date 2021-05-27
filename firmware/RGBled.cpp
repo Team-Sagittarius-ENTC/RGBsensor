@@ -49,8 +49,6 @@ void RGBled::lightLED(byte color[]){
   for (byte i = 0; i < 3; ++i){
     PORTB = (PORTB & B11111100) | i;
     setDutyCycle(color[i]);
-    
-    
   }//end  of switching loop
   
 }// end of the function
