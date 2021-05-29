@@ -14,17 +14,17 @@ namespace BT_IFACE
     {
         public static SerialPort _serialport;
         private bool _continue = true;
-        
-        public FormOpenCon()
+
+        //Create the form1 object
+        Form1 form1;
+
+
+        public FormOpenCon(Form1 frm)
         {
             InitializeComponent();
             addCOMports();
             _serialport = new SerialPort();
-        }
-
-        private static void readSerialData()
-        {
-
+            form1 = frm;
         }
 
         private void addCOMports()
@@ -50,6 +50,10 @@ namespace BT_IFACE
             btnSend.Enabled = status;
             tbINPUT.Enabled = status;
 
+            // change main forms options button
+            form1.btnOptions.Enabled = status;
+            
+
             if (status)
             {
                 lblStatus.Text = "Connected";
@@ -60,6 +64,7 @@ namespace BT_IFACE
             {
                 lblStatus.Text = "Not Connected!!";
                 btnConnect.Text = "Connect";
+                form1.panelOptions.Visible = false;
             }
         }
 
@@ -146,14 +151,8 @@ namespace BT_IFACE
 
         private void btnSend_Click(object sender, EventArgs e)
         {
-            if (SerialReadThread.IsAlive)
-            {
-                tbINPUT.Text = "Thread is alive";
-            }
-            else
-            {
-                tbINPUT.Text = "Thread is Dead";
-            }
+            _serialport.WriteLine(tbINPUT.Text);
+            tbINPUT.Text = "";
         }
     }
 }

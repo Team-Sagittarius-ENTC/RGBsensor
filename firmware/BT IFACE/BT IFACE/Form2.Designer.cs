@@ -117,10 +117,10 @@ namespace BT_IFACE
             this.tbINPUT.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tbINPUT.Enabled = false;
             this.tbINPUT.ForeColor = System.Drawing.Color.Gainsboro;
-            this.tbINPUT.Location = new System.Drawing.Point(426, 318);
+            this.tbINPUT.Location = new System.Drawing.Point(426, 258);
             this.tbINPUT.Multiline = true;
             this.tbINPUT.Name = "tbINPUT";
-            this.tbINPUT.Size = new System.Drawing.Size(167, 34);
+            this.tbINPUT.Size = new System.Drawing.Size(167, 94);
             this.tbINPUT.TabIndex = 6;
             // 
             // btnSend

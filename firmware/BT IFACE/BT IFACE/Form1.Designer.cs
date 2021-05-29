@@ -361,11 +361,11 @@ namespace BT_IFACE
         private System.Windows.Forms.Button btnOpen;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Panel panelOptions;
         private System.Windows.Forms.Button Calibration;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button6;
         public System.Windows.Forms.Button btnOptions;
+        public System.Windows.Forms.Panel panelOptions;
     }
 }
 
