@@ -23,6 +23,8 @@ namespace BT_IFACE
             panelFile.Visible = false;
             panelConnection.Visible = false;
             panelOptions.Visible = false;
+
+            btnOptions.Enabled = false;
         }
 
         private void hidePanels()
@@ -72,7 +74,7 @@ namespace BT_IFACE
 
         private void button4_Click(object sender, EventArgs e)
         {
-
+            openChildForm(new FormOpenCon());
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -97,6 +99,36 @@ namespace BT_IFACE
 
         private void Calibration_Click(object sender, EventArgs e)
         {
+
+        }
+
+        // code for opening form in container panel
+        private Form activeForm = null;
+        private void openChildForm(Form childForm)
+        {
+            //if the active form is already the selected form we do not need to open it again
+            if (activeForm != childForm) {
+                //close the opened form
+                if (activeForm != null)
+                {
+                    activeForm.Close();
+                }
+
+                activeForm = childForm;
+                childForm.TopLevel = false;
+                childForm.FormBorderStyle = FormBorderStyle.None;
+                childForm.Dock = DockStyle.Fill;
+                panel1.Controls.Add(childForm);
+                panel1.Tag = childForm;
+                childForm.BringToFront();
+                childForm.Show();
+
+            }// end of if
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+            // this is the container panel
 
         }
     }

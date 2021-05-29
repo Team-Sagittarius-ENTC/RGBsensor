@@ -37,7 +37,6 @@ namespace BT_IFACE
             this.button6 = new System.Windows.Forms.Button();
             this.btnOptions = new System.Windows.Forms.Button();
             this.panelConnection = new System.Windows.Forms.Panel();
-            this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.panelFile = new System.Windows.Forms.Panel();
@@ -71,7 +70,7 @@ namespace BT_IFACE
             this.panelRight.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelRight.Location = new System.Drawing.Point(0, 0);
             this.panelRight.Name = "panelRight";
-            this.panelRight.Size = new System.Drawing.Size(180, 503);
+            this.panelRight.Size = new System.Drawing.Size(180, 523);
             this.panelRight.TabIndex = 0;
             // 
             // panelOptions
@@ -81,7 +80,7 @@ namespace BT_IFACE
             this.panelOptions.Controls.Add(this.button5);
             this.panelOptions.Controls.Add(this.button6);
             this.panelOptions.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelOptions.Location = new System.Drawing.Point(0, 388);
+            this.panelOptions.Location = new System.Drawing.Point(0, 352);
             this.panelOptions.Name = "panelOptions";
             this.panelOptions.Size = new System.Drawing.Size(180, 110);
             this.panelOptions.TabIndex = 7;
@@ -143,7 +142,7 @@ namespace BT_IFACE
             this.btnOptions.ForeColor = System.Drawing.Color.Gainsboro;
             this.btnOptions.Image = global::BT_IFACE.Properties.Resources._11;
             this.btnOptions.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnOptions.Location = new System.Drawing.Point(0, 348);
+            this.btnOptions.Location = new System.Drawing.Point(0, 312);
             this.btnOptions.Name = "btnOptions";
             this.btnOptions.Padding = new System.Windows.Forms.Padding(10, 0, 15, 0);
             this.btnOptions.Size = new System.Drawing.Size(180, 40);
@@ -157,29 +156,12 @@ namespace BT_IFACE
             // panelConnection
             // 
             this.panelConnection.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.panelConnection.Controls.Add(this.button3);
             this.panelConnection.Controls.Add(this.button4);
             this.panelConnection.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelConnection.Location = new System.Drawing.Point(0, 274);
             this.panelConnection.Name = "panelConnection";
-            this.panelConnection.Size = new System.Drawing.Size(180, 74);
+            this.panelConnection.Size = new System.Drawing.Size(180, 38);
             this.panelConnection.TabIndex = 5;
-            // 
-            // button3
-            // 
-            this.button3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button3.FlatAppearance.BorderSize = 0;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.ForeColor = System.Drawing.Color.Gainsboro;
-            this.button3.Location = new System.Drawing.Point(0, 35);
-            this.button3.Name = "button3";
-            this.button3.Padding = new System.Windows.Forms.Padding(30, 0, 0, 0);
-            this.button3.Size = new System.Drawing.Size(180, 35);
-            this.button3.TabIndex = 1;
-            this.button3.Text = "Close Conn";
-            this.button3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button4
             // 
@@ -192,7 +174,7 @@ namespace BT_IFACE
             this.button4.Padding = new System.Windows.Forms.Padding(30, 0, 0, 0);
             this.button4.Size = new System.Drawing.Size(180, 35);
             this.button4.TabIndex = 0;
-            this.button4.Text = "Open Conn";
+            this.button4.Text = "Open/Close";
             this.button4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
@@ -321,7 +303,7 @@ namespace BT_IFACE
             // 
             this.pictureBox2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(177, 147);
+            this.pictureBox2.Location = new System.Drawing.Point(233, 150);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(252, 207);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -335,20 +317,21 @@ namespace BT_IFACE
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(180, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(652, 503);
+            this.panel1.Size = new System.Drawing.Size(712, 523);
             this.panel1.TabIndex = 1;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.ClientSize = new System.Drawing.Size(832, 503);
+            this.ClientSize = new System.Drawing.Size(892, 523);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panelRight);
             this.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.MaximumSize = new System.Drawing.Size(850, 550);
-            this.MinimumSize = new System.Drawing.Size(850, 550);
+            this.MaximumSize = new System.Drawing.Size(910, 570);
+            this.MinimumSize = new System.Drawing.Size(910, 570);
             this.Name = "Form1";
             this.Text = "RGB Sensor Monitor";
             this.panelRight.ResumeLayout(false);
@@ -371,7 +354,6 @@ namespace BT_IFACE
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Panel panelFile;
         private System.Windows.Forms.Panel panelConnection;
-        private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button btnClose;
@@ -383,7 +365,7 @@ namespace BT_IFACE
         private System.Windows.Forms.Button Calibration;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button btnOptions;
+        public System.Windows.Forms.Button btnOptions;
     }
 }
 

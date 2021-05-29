@@ -57,11 +57,11 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Drawing.Common" name="System.Drawing.Common, Version=4.0.2.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51" />
-  <data name="button1.Image" type="System.Drawing.Bitmap, System.Drawing.Common" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="button1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAYAAAByDd+UAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAS
-        cwAAEnMBjCK5BwAAB0lJREFUSEutVntwVHcVPiZYoHaSUiFUImTfrzzYvKBJIFQFA622QmmHAYqVVquB
+        cQAAEnEB89x6jgAAB0lJREFUSEutVntwVHcVPiZYoHaSUiFUImTfrzzYvKBJIFQFA622QmmHAYqVVquB
         VqcUDCabe3/33t0lhNCEEhQZ25HKH9bijLY6+Kq1iqRowEBCNtndZN/Pu6GNlFBqWb+7XGccmU5L8Mz8
         Zu/Mued8e37n+8659P+wgTY7neeqKftNopBQZo3zhqeTvK47wetZVLCsuuBunBngrRTcXaxG3IL5DzxI
         A1wtvdSyLi/EmbakmNYrs5JshmmuKb9pppmMM8MPfEJl0ThnVqNuwYb6fkvp3XdRmDevT/GayTTTygCQ
@@ -95,10 +95,10 @@
         JATjU5BbzVs9j+aPsXIacxjp38L+52zo9phyAAAAAElFTkSuQmCC
 </value>
   </data>
-  <data name="btnFile.Image" type="System.Drawing.Bitmap, System.Drawing.Common" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="btnFile.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAYAAAByDd+UAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAS
-        cwAAEnMBjCK5BwAAAydJREFUSEvlll1IFFEUx48SWBpESqF9rLM76+666qoZPZjRS+DHixRBvURBEIHV
+        cQAAEnEB89x6jgAAAydJREFUSEvlll1IFFEUx48SWBpESqF9rLM76+666qoZPZjRS+DHixRBvURBEIHV
         g2/a6syd2dVtC0pUyIioiB7C6KmnzI+HqAfJhyLQWteZnf2Y2TVI1sKKtjM5xaqTmmMv9Ycfd7n3nvnv
         OffcYeDf13RrHghcCcicFeLEsgSFo0EkDkh15MLztmotyoBkhoIprmyLzNtqFM5ahwbIz5Guk7miQwIp
         LpjtoCDl3apFGVCw3eaSWfPjBKGS06RwbinUHK4PC6yjUGSKYKL3mBa5RsnEMogPTq0ElrzpPbMTQvea
@@ -115,7 +115,7 @@
         gg==
 </value>
   </data>
-  <data name="pictureBox1.Image" type="System.Drawing.Bitmap, System.Drawing.Common" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="pictureBox1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAYYAAAF3CAYAAAChTuxZAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
         DAAACwwBP0AiyAAA/7JJREFUeF7sfXecVdX1/QNNYhIbxfy+MuW1oQzFJAoIGhEb1U4RG8UuYqGL0pHe
@@ -2051,7 +2051,7 @@
         oAsXLly4KK2wrf8DiFott0tHP+MAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="pictureBox2.Image" type="System.Drawing.Bitmap, System.Drawing.Common" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="pictureBox2.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAYYAAAF3CAYAAAChTuxZAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
         DAAACwwBP0AiyAAA/7JJREFUeF7sfXecVdX1/QNNYhIbxfy+MuW1oQzFJAoIGhEb1U4RG8UuYqGL0pHe

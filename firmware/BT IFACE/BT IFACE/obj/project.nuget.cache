@@ -1,8 +1,22 @@
 {
   "version": 2,
-  "dgSpecHash": "aSvj7lzb9egD6sCxFuRI1HtVZLJEbGGzqp9iuk6LsQ3uMLnWLVmUknjTAao099uy5YMNMj7g1wTydhQFJjBh/w==",
+  "dgSpecHash": "xBHm+cCuiKfmvrJAZUHMRS2oRpJ8m0oJ7SLVwDDwbukZdeTkHkhY/U7kJ22QXZIpinSTQ7mqdaOGW7ip7LckcQ==",
   "success": true,
   "projectFilePath": "E:\\UOM Projects\\Lab Project 1\\RGBsensor\\firmware\\BT IFACE\\BT IFACE\\BT IFACE.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\ASUS\\.nuget\\packages\\microsoft.netcore.platforms\\5.0.0\\microsoft.netcore.platforms.5.0.0.nupkg.sha512",
+    "C:\\Users\\ASUS\\.nuget\\packages\\microsoft.win32.registry\\5.0.0\\microsoft.win32.registry.5.0.0.nupkg.sha512",
+    "C:\\Users\\ASUS\\.nuget\\packages\\runtime.linux-arm.runtime.native.system.io.ports\\5.0.0\\runtime.linux-arm.runtime.native.system.io.ports.5.0.0.nupkg.sha512",
+    "C:\\Users\\ASUS\\.nuget\\packages\\runtime.linux-arm64.runtime.native.system.io.ports\\5.0.0\\runtime.linux-arm64.runtime.native.system.io.ports.5.0.0.nupkg.sha512",
+    "C:\\Users\\ASUS\\.nuget\\packages\\runtime.linux-x64.runtime.native.system.io.ports\\5.0.0\\runtime.linux-x64.runtime.native.system.io.ports.5.0.0.nupkg.sha512",
+    "C:\\Users\\ASUS\\.nuget\\packages\\runtime.native.system.io.ports\\5.0.1\\runtime.native.system.io.ports.5.0.1.nupkg.sha512",
+    "C:\\Users\\ASUS\\.nuget\\packages\\runtime.osx-x64.runtime.native.system.io.ports\\5.0.0\\runtime.osx-x64.runtime.native.system.io.ports.5.0.0.nupkg.sha512",
+    "C:\\Users\\ASUS\\.nuget\\packages\\system.io.ports\\5.0.1\\system.io.ports.5.0.1.nupkg.sha512",
+    "C:\\Users\\ASUS\\.nuget\\packages\\system.security.accesscontrol\\5.0.0\\system.security.accesscontrol.5.0.0.nupkg.sha512",
+    "C:\\Users\\ASUS\\.nuget\\packages\\system.security.principal.windows\\5.0.0\\system.security.principal.windows.5.0.0.nupkg.sha512",
+    "C:\\Users\\ASUS\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\3.1.10\\microsoft.aspnetcore.app.ref.3.1.10.nupkg.sha512",
+    "C:\\Users\\ASUS\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\3.1.0\\microsoft.windowsdesktop.app.ref.3.1.0.nupkg.sha512",
+    "C:\\Users\\ASUS\\.nuget\\packages\\microsoft.netcore.app.ref\\3.1.0\\microsoft.netcore.app.ref.3.1.0.nupkg.sha512"
+  ],
   "logs": []
 }
