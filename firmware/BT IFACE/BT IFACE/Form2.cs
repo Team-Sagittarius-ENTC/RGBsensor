@@ -12,19 +12,39 @@ namespace BT_IFACE
 {
     public partial class FormOpenCon : Form
     {
-        public static SerialPort _serialport;
+        
         private bool _continue = true;
-
         //Create the form1 object
         Form1 form1;
+        SerialPort _serialport;
+        //first time checker
+        private static bool firstRound = true;
 
 
-        public FormOpenCon(Form1 frm)
+        public FormOpenCon(Form1 frm, ref SerialPort srpt)
         {
             InitializeComponent();
             addCOMports();
-            _serialport = new SerialPort();
+            _serialport = srpt;
             form1 = frm;
+
+            // now that we have to check if a serial connection already made.
+            // if so we have to do what connect button do
+
+            if (_serialport.IsOpen)
+            {
+                firstRound = true;
+
+                //start Reading thread
+                _continue = true;
+                SerialReadThread = new Thread(SerialRead);
+                SerialReadThread.IsBackground = true; // run in the background
+                SerialReadThread.Start();
+
+                //Enable Buttons
+                EnableDisableFormOptions(true);
+            }
+
         }
 
         private void addCOMports()
@@ -75,35 +95,35 @@ namespace BT_IFACE
             
             try
             {
-                if (cbCOMPORTS.Text != "No Ports!!" && cbCOMPORTS.Text != "")
+                if (cbCOMPORTS.Text != "No Ports!!" && cbCOMPORTS.Text != "" && !_serialport.IsOpen)
                 {
-                    if (!_serialport.IsOpen) {
 
-                        //start Serial Communication
-                        _serialport.PortName = cbCOMPORTS.Text;
-                        _serialport.BaudRate = 9600;
-                        _serialport.Parity = Parity.None;
-                        _serialport.DataBits = 8;
-                        _serialport.Open(); //opening the SerialPort
+                    //start Serial Communication
+                    _serialport.PortName = cbCOMPORTS.Text;
+                    _serialport.BaudRate = 9600;
+                    _serialport.Parity = Parity.None;
+                    _serialport.DataBits = 8;
+                    _serialport.Open(); //opening the SerialPort
 
-                        //start Reading thread
-                        _continue = true;
-                        SerialReadThread = new Thread(SerialRead);
-                        SerialReadThread.IsBackground = true; // run in the background
-                        SerialReadThread.Start();
+                    //start Reading thread
+                    _continue = true;
+                    SerialReadThread = new Thread(SerialRead);
+                    SerialReadThread.IsBackground = true; // run in the background
+                    SerialReadThread.Start();
 
-                        //Enable Buttons
-                        EnableDisableFormOptions(true);
-                    }
-                    else
-                    {
-                        //Stop the thread
-                        _continue = false;
-                        //Disable the form
-                        EnableDisableFormOptions(false);
-
-                    }
+                    //Enable Buttons
+                    EnableDisableFormOptions(true);
                     
+                }
+                
+                else if (_serialport.IsOpen)
+                {
+                    //Stop the thread
+                    _continue = false;
+                    //End the Serial Connection
+                    _serialport.Close();
+                    //Disable the form
+                    EnableDisableFormOptions(false);
                 }
             }catch(Exception ex)
             {
@@ -118,35 +138,50 @@ namespace BT_IFACE
 
         private void AppendText(string text)
         {
-            // InvokeRequired required compares the thread ID of the
-            // calling thread to the thread ID of the creating thread.
-            // If these threads are different, it returns true.
-            if (this.tbMonitor.InvokeRequired)
+            try
             {
-                SetTextCallback d = new SetTextCallback(AppendText);
-                this.Invoke(d, new object[] { text });
-            }
-            else
-            {
-                if (checkAutoScroll.Checked)
+                // InvokeRequired required compares the thread ID of the
+                // calling thread to the thread ID of the creating thread.
+                // If these threads are different, it returns true.
+                if (this.tbMonitor.InvokeRequired)
                 {
-                    this.tbMonitor.AppendText(text);
+                    SetTextCallback d = new SetTextCallback(AppendText);
+                    this.Invoke(d, new object[] { text });
                 }
                 else
                 {
-                    this.tbMonitor.Text += text;
+                    if (checkAutoScroll.Checked)
+                    {
+                        this.tbMonitor.AppendText(text);
+                    }
+                    else
+                    {
+                        this.tbMonitor.Text += text;
+                    }
                 }
             }
+            catch (ObjectDisposedException)
+            {
+                // that means this has comes to an end
+                _continue = false;
+                
+            }
+            
         }
-
+   
         private void SerialRead()
         {
             while (_continue)
             {
+                if (firstRound)
+                {
+                    _serialport.DiscardInBuffer();
+                    _serialport.DiscardOutBuffer();
+                    _serialport.DtrEnable = true;
+                    firstRound = false;
+                }
                 AppendText(_serialport.ReadExisting().ToString());
             }
-            
-            _serialport.Close();
         }
 
         private void btnSend_Click(object sender, EventArgs e)

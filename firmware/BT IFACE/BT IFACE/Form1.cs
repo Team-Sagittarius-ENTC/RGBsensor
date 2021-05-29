@@ -7,15 +7,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO.Ports;
 
 namespace BT_IFACE
 {
     public partial class Form1 : Form
     {
+        public static SerialPort _serialport;
         public Form1()
         {
             InitializeComponent();
             initPanels();
+            _serialport = new SerialPort();
         }
 
         private void initPanels()
@@ -74,7 +77,7 @@ namespace BT_IFACE
 
         private void button4_Click(object sender, EventArgs e)
         {
-            openChildForm(new FormOpenCon(this));
+            openChildForm(new FormOpenCon(this, ref _serialport));
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -89,7 +92,7 @@ namespace BT_IFACE
 
         private void button6_Click(object sender, EventArgs e)
         {
-
+            openChildForm(new Form3(ref _serialport));
         }
 
         private void button5_Click(object sender, EventArgs e)

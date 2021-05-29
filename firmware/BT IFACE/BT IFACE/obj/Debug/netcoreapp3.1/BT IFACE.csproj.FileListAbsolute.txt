@@ -13,7 +13,6 @@ E:\UOM Projects\Lab Project 1\RGBsensor\firmware\BT IFACE\BT IFACE\obj\Debug\net
 E:\UOM Projects\Lab Project 1\RGBsensor\firmware\BT IFACE\BT IFACE\obj\Debug\netcoreapp3.1\BT IFACE.pdb
 E:\UOM Projects\Lab Project 1\RGBsensor\firmware\BT IFACE\BT IFACE\obj\Debug\netcoreapp3.1\BT IFACE.genruntimeconfig.cache
 E:\UOM Projects\Lab Project 1\RGBsensor\firmware\BT IFACE\BT IFACE\obj\Debug\netcoreapp3.1\BT_IFACE.Properties.Resources.resources
-E:\UOM Projects\Lab Project 1\RGBsensor\firmware\BT IFACE\BT IFACE\obj\Debug\netcoreapp3.1\BT IFACE.csproj.AssemblyReference.cache
 E:\UOM Projects\Lab Project 1\RGBsensor\firmware\BT IFACE\BT IFACE\obj\Debug\netcoreapp3.1\BT_IFACE.FormOpenCon.resources
 E:\UOM Projects\Lab Project 1\RGBsensor\firmware\BT IFACE\BT IFACE\bin\Debug\netcoreapp3.1\Microsoft.Win32.Registry.dll
 E:\UOM Projects\Lab Project 1\RGBsensor\firmware\BT IFACE\BT IFACE\bin\Debug\netcoreapp3.1\System.IO.Ports.dll
@@ -31,3 +30,4 @@ E:\UOM Projects\Lab Project 1\RGBsensor\firmware\BT IFACE\BT IFACE\bin\Debug\net
 E:\UOM Projects\Lab Project 1\RGBsensor\firmware\BT IFACE\BT IFACE\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.1\System.Security.Principal.Windows.dll
 E:\UOM Projects\Lab Project 1\RGBsensor\firmware\BT IFACE\BT IFACE\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\System.Security.Principal.Windows.dll
 E:\UOM Projects\Lab Project 1\RGBsensor\firmware\BT IFACE\BT IFACE\obj\Debug\netcoreapp3.1\BT IFACE.csproj.CopyComplete
+E:\UOM Projects\Lab Project 1\RGBsensor\firmware\BT IFACE\BT IFACE\obj\Debug\netcoreapp3.1\BT_IFACE.Form3.resources
