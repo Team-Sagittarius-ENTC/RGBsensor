@@ -1,0 +1,30 @@
+E:\UOM Projects\Lab Project 1\RGBsensor\firmware\BT IFACE\BT IFACE\bin\Debug\net5.0-windows\BT IFACE.exe
+E:\UOM Projects\Lab Project 1\RGBsensor\firmware\BT IFACE\BT IFACE\bin\Debug\net5.0-windows\BT IFACE.deps.json
+E:\UOM Projects\Lab Project 1\RGBsensor\firmware\BT IFACE\BT IFACE\bin\Debug\net5.0-windows\BT IFACE.runtimeconfig.json
+E:\UOM Projects\Lab Project 1\RGBsensor\firmware\BT IFACE\BT IFACE\bin\Debug\net5.0-windows\BT IFACE.runtimeconfig.dev.json
+E:\UOM Projects\Lab Project 1\RGBsensor\firmware\BT IFACE\BT IFACE\bin\Debug\net5.0-windows\BT IFACE.dll
+E:\UOM Projects\Lab Project 1\RGBsensor\firmware\BT IFACE\BT IFACE\bin\Debug\net5.0-windows\ref\BT IFACE.dll
+E:\UOM Projects\Lab Project 1\RGBsensor\firmware\BT IFACE\BT IFACE\bin\Debug\net5.0-windows\BT IFACE.pdb
+E:\UOM Projects\Lab Project 1\RGBsensor\firmware\BT IFACE\BT IFACE\bin\Debug\net5.0-windows\System.IO.Ports.dll
+E:\UOM Projects\Lab Project 1\RGBsensor\firmware\BT IFACE\BT IFACE\bin\Debug\net5.0-windows\runtimes\linux-arm\native\libSystem.IO.Ports.Native.so
+E:\UOM Projects\Lab Project 1\RGBsensor\firmware\BT IFACE\BT IFACE\bin\Debug\net5.0-windows\runtimes\linux-arm64\native\libSystem.IO.Ports.Native.so
+E:\UOM Projects\Lab Project 1\RGBsensor\firmware\BT IFACE\BT IFACE\bin\Debug\net5.0-windows\runtimes\linux-x64\native\libSystem.IO.Ports.Native.so
+E:\UOM Projects\Lab Project 1\RGBsensor\firmware\BT IFACE\BT IFACE\bin\Debug\net5.0-windows\runtimes\osx-x64\native\libSystem.IO.Ports.Native.dylib
+E:\UOM Projects\Lab Project 1\RGBsensor\firmware\BT IFACE\BT IFACE\bin\Debug\net5.0-windows\runtimes\linux\lib\netstandard2.0\System.IO.Ports.dll
+E:\UOM Projects\Lab Project 1\RGBsensor\firmware\BT IFACE\BT IFACE\bin\Debug\net5.0-windows\runtimes\osx\lib\netstandard2.0\System.IO.Ports.dll
+E:\UOM Projects\Lab Project 1\RGBsensor\firmware\BT IFACE\BT IFACE\bin\Debug\net5.0-windows\runtimes\win\lib\netstandard2.0\System.IO.Ports.dll
+E:\UOM Projects\Lab Project 1\RGBsensor\firmware\BT IFACE\BT IFACE\obj\Debug\net5.0-windows\BT IFACE.csproj.AssemblyReference.cache
+E:\UOM Projects\Lab Project 1\RGBsensor\firmware\BT IFACE\BT IFACE\obj\Debug\net5.0-windows\BT_IFACE.Form1.resources
+E:\UOM Projects\Lab Project 1\RGBsensor\firmware\BT IFACE\BT IFACE\obj\Debug\net5.0-windows\BT_IFACE.FormOpenCon.resources
+E:\UOM Projects\Lab Project 1\RGBsensor\firmware\BT IFACE\BT IFACE\obj\Debug\net5.0-windows\BT_IFACE.Form3.resources
+E:\UOM Projects\Lab Project 1\RGBsensor\firmware\BT IFACE\BT IFACE\obj\Debug\net5.0-windows\BT_IFACE.Properties.Resources.resources
+E:\UOM Projects\Lab Project 1\RGBsensor\firmware\BT IFACE\BT IFACE\obj\Debug\net5.0-windows\BT IFACE.csproj.GenerateResource.cache
+E:\UOM Projects\Lab Project 1\RGBsensor\firmware\BT IFACE\BT IFACE\obj\Debug\net5.0-windows\BT IFACE.GeneratedMSBuildEditorConfig.editorconfig
+E:\UOM Projects\Lab Project 1\RGBsensor\firmware\BT IFACE\BT IFACE\obj\Debug\net5.0-windows\BT IFACE.AssemblyInfoInputs.cache
+E:\UOM Projects\Lab Project 1\RGBsensor\firmware\BT IFACE\BT IFACE\obj\Debug\net5.0-windows\BT IFACE.AssemblyInfo.cs
+E:\UOM Projects\Lab Project 1\RGBsensor\firmware\BT IFACE\BT IFACE\obj\Debug\net5.0-windows\BT IFACE.csproj.CoreCompileInputs.cache
+E:\UOM Projects\Lab Project 1\RGBsensor\firmware\BT IFACE\BT IFACE\obj\Debug\net5.0-windows\BT IFACE.csproj.CopyComplete
+E:\UOM Projects\Lab Project 1\RGBsensor\firmware\BT IFACE\BT IFACE\obj\Debug\net5.0-windows\BT IFACE.dll
+E:\UOM Projects\Lab Project 1\RGBsensor\firmware\BT IFACE\BT IFACE\obj\Debug\net5.0-windows\ref\BT IFACE.dll
+E:\UOM Projects\Lab Project 1\RGBsensor\firmware\BT IFACE\BT IFACE\obj\Debug\net5.0-windows\BT IFACE.pdb
+E:\UOM Projects\Lab Project 1\RGBsensor\firmware\BT IFACE\BT IFACE\obj\Debug\net5.0-windows\BT IFACE.genruntimeconfig.cache

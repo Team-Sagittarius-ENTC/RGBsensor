@@ -12,6 +12,7 @@
 #include <Arduino.h>
 #include <LiquidCrystal.h>
 #include "keypad.h"
+#include "RGBled.h"
 
 class Display{
     private:
@@ -19,7 +20,9 @@ class Display{
       int  color[3]{};
       byte keypadPin;
       String tempInput = "";
-      Keypad keypad = Keypad(A3);
+      byte ldrPins[3] = {A2, A1, A0};
+      Keypad keypad;
+      RGBled theLed;
 
       int inputColor();
       
@@ -35,7 +38,9 @@ class Display{
       void printMainMenu();
       void printSensorMenu();
       void printRGBMenu();
+      void clear_();
       int* colorInputDisplay();
+      void printLiveSense(int color_[]);
 };
 
 #endif

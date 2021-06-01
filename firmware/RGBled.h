@@ -12,7 +12,7 @@ class RGBled
   
   public:
     RGBled();
-    void lightLED(byte color[]);
+    void lightLED(int color[]);
     void offLED();
 
 };//end of RGBled class

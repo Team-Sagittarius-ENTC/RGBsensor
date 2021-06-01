@@ -10,6 +10,7 @@
 #define RGBsensorFunctions
 
 #include <Arduino.h>
+#include "Display.h"
 
 // this is the main class for the RGB sensor
 class RGBsensor{
@@ -27,13 +28,15 @@ class RGBsensor{
     
     void procRegression(int16_t avg);
     void inverseRegression();
+    //void sensor(bool stat);
     
   public:
+    void sensor(bool stat);
     RGBsensor(byte tSensor[]); // this is the constructor for the sensor
     
     int *readColor(bool calibrate = false); //this is the read colot method
 
-    void calibrate(bool compare = false); // this is the calibration function
+    void calibrate(Display lcd, bool compare = false); // this is the calibration function
     
     void displayColor(int *tcolor); // this function will display the color in the serial monitor
 

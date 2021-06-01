@@ -1,13 +1,6 @@
-/*
-  RGB Sensor Project
-  ==================
-
-  This is the cpp file for the display liblary.
-  Programmed By: Kajhanan Kailainathan 190286M
-*/
-
 #include "Display.h"
 #include "keypad.h"
+#include "RGBled.h"
 #include <Arduino.h>
 #include <LiquidCrystal.h>
 
@@ -16,6 +9,10 @@ Display::Display(byte pin){
   lcd.clear();
   keypadPin = pin;
 }// end of the Display contructor
+
+void Display::clear_(){
+  lcd.clear();
+}
 
 void Display::printMsg(String message, byte alignment = 0, bool line = 0){
   /*
@@ -65,7 +62,7 @@ int Display::inputColor(byte positionx, byte positiony){
   String letter;
 
   while (true){
-    letter = keypad.get_keys(); 
+    letter = keypad.read_key(); 
     
     if(letter == "*"){
       // Accept the given value
@@ -126,14 +123,31 @@ int* Display::colorInputDisplay(){
   lcd.setCursor(8, 1);
   lcd.print("Done!");
 
-  delay(1000);
+  for(byte i = 0; i < 3; ++i){
+    Serial.print(color[i]);
+    Serial.print(i == 2 ? "\n" : ",");
+  }
+
+  while(keypad.read_key(false) == ""){
+    theLed.lightLED(color);
+  }
   lcd.clear();
-
-  lcd.print("Lighting RGB ->");
-  lcd.setCursor(0,1);
-  lcd.print("#");
-  for(byte i = 0; i < 3; ++i) lcd.print(color[i], HEX);
-
-  delay(2000);
   return color;
+}
+
+void Display::printLiveSense(int color_[]){
+
+  lcd.clear();
+  lcd.print("R: ");
+  lcd.print(color_[0]);
+
+  lcd.setCursor(8, 0);
+  lcd.print("G: ");
+  lcd.print(color_[1]);
+
+  lcd.setCursor(0, 1);
+  lcd.print("B: ");
+  lcd.print(color_[2]);
+
+  
 }

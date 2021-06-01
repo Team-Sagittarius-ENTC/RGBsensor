@@ -4,13 +4,12 @@
 #include "Display.h"
 
 
-
 byte ldrPins[3] = {A2, A1, A0};
 int *color {nullptr};
 
 // creating instances of classes we defined
 RGBsensor Sensor(ldrPins);
-Keypad keypad(A3);
+Keypad keypad;
 RGBled Led;
 Display Lcd(A3);
 
@@ -27,21 +26,26 @@ void setup(){
 
 void loop(){
   Lcd.printMainMenu();
-
-  switch(keypad.get_keys().toInt()){
+  switch(keypad.read_key().toInt()){
     case 1:
 
       // we are at the sensoring part
       Lcd.printSensorMenu();
-      switch(keypad.get_keys().toInt()){
+      switch(keypad.read_key().toInt()){
         case 1:
-          Lcd.printMsg("||At calibration");
-          while(1);
+          // this is the point where we calibrate the sensor
+          Sensor.calibrate(Lcd);
         break;
 
         case 2:
-          Lcd.printMsg("||At N Calibration");
-          while(1);
+          Sensor.sensor(1);
+          while(keypad.read_key(false) == ""){
+            color = Sensor.readColor(true);
+            Lcd.printLiveSense(color);
+            Sensor.displayColor(color);
+            delay(200);
+          }
+          Sensor.sensor(0);
         break;
 
         default:
@@ -54,15 +58,21 @@ void loop(){
 
       //we are at RGB ligtning part
       Lcd.printRGBMenu();
-      switch(keypad.get_keys().toInt()){
+      switch(keypad.read_key().toInt()){
         case 1:
           color = Lcd.colorInputDisplay(); // inputing the color from the keypad
           
         break;
 
         case 2:
-          Lcd.printMsg("||Real Time");
-          while(1);
+          Sensor.sensor(1);
+          while(keypad.read_key(false) == ""){
+            color = Sensor.readColor();
+            Lcd.printLiveSense(color);
+            Sensor.displayColor(color);
+            delay(200);
+          }
+          Sensor.sensor(0);
         break;
 
         default:

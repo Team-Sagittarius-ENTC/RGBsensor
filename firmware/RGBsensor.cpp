@@ -8,6 +8,7 @@
 
 #include "RGBsensor.h"
 #include <Arduino.h>
+#include "Display.h"
 
 // Constructor for the sensor
 RGBsensor::RGBsensor(byte tSensor[]){
@@ -16,8 +17,14 @@ RGBsensor::RGBsensor(byte tSensor[]){
     user when creating the instance. those are the RGB ldr pins.
   */
   // connect the sensor and initialize
+  DDRC = DDRC | 0b00001000;
   for (byte i = 0; i < 3; ++i) Sensor[i] = tSensor[i];
 }// end of constructor
+
+void RGBsensor::sensor(bool stat){
+  if (stat) PORTC |= 0b00001000;
+  else PORTC &= 0b11110111;
+}// end of the sensor on of
 
 //Regression processor
 void RGBsensor::procRegression(int16_t avg){
@@ -91,8 +98,8 @@ void RGBsensor::displayColor(int *tcolor){
 }// end of the displayColor method
 
 // Sensor Calibration Method
-void RGBsensor::calibrate(bool compare = false){
-
+void RGBsensor::calibrate(Display Lcd, bool compare = false){
+  sensor(1); //turning on the sensor
   /*
     * This is the main function in reading process
     * This function will do some processing and find optimised vertical RCONST for equation
@@ -128,10 +135,12 @@ void RGBsensor::calibrate(bool compare = false){
     }//end of else
 
 
-    
-    Serial.print("Calibration Percentage -> ");
-    Serial.print(2 * i);
-    Serial.println("%");
+    Lcd.clear_();
+    Lcd.printMsg("Percentage >", 0, 0);
+    Lcd.printMsg(String(2 * i) + " %", 0, 1);
+    //Serial.print("Calibration Percentage -> ");
+    //Serial.print(2 * i);
+    //Serial.println("%");
   }//end of filling for loop
 
   if(compare){
@@ -178,7 +187,5 @@ void RGBsensor::calibrate(bool compare = false){
   //correct the regression constant
   for(byte i = 0; i < 3; ++i) RCONSTS[i] += double(samples[0][i]) / 3;
 
-  
-  
-
+  sensor(0); // turning of the sensor
 }// end of calibration function

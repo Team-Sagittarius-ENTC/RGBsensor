@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 using System.IO.Ports;
 using System.Threading;
@@ -13,12 +8,11 @@ namespace BT_IFACE
     public partial class FormOpenCon : Form
     {
         
-        private bool _continue = true;
-        //Create the form1 object
         Form1 form1;
         SerialPort _serialport;
-        //first time checker
+        private static bool _continue = true;
         private static bool firstRound = true;
+        private static Thread SerialReadThread;
 
 
         public FormOpenCon(Form1 frm, ref SerialPort srpt)
@@ -34,6 +28,11 @@ namespace BT_IFACE
             if (_serialport.IsOpen)
             {
                 firstRound = true;
+                if (SerialReadThread.IsAlive)
+                {
+                    _continue = false;
+                    Thread.Sleep(3000);
+                }
 
                 //start Reading thread
                 _continue = true;
@@ -88,8 +87,6 @@ namespace BT_IFACE
             }
         }
 
-
-        private static Thread SerialReadThread;
         private void btnConnect_Click(object sender, EventArgs e)
         {
             
@@ -136,7 +133,7 @@ namespace BT_IFACE
 
         delegate void SetTextCallback(string text);
 
-        private void AppendText(string text)
+        private void AppendText_(string text)
         {
             try
             {
@@ -145,7 +142,7 @@ namespace BT_IFACE
                 // If these threads are different, it returns true.
                 if (this.tbMonitor.InvokeRequired)
                 {
-                    SetTextCallback d = new SetTextCallback(AppendText);
+                    SetTextCallback d = new SetTextCallback(AppendText_);
                     this.Invoke(d, new object[] { text });
                 }
                 else
@@ -169,7 +166,7 @@ namespace BT_IFACE
             
         }
    
-        private void SerialRead()
+        private void SerialRead()//object sender, System.IO.Ports.SerialDataReceivedEventArgs e)
         {
             while (_continue)
             {
@@ -180,7 +177,14 @@ namespace BT_IFACE
                     _serialport.DtrEnable = true;
                     firstRound = false;
                 }
-                AppendText(_serialport.ReadExisting().ToString());
+                try
+                {
+                    AppendText_(_serialport.ReadExisting().ToString());
+                }
+                catch (Exception e_) {
+                    AppendText_(e_.ToString());
+                }
+                
             }
         }
 

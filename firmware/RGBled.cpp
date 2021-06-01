@@ -45,10 +45,11 @@ void RGBled::setDutyCycle(byte dutyVal)
 }//end of setDutyCycle
 
 
-void RGBled::lightLED(byte color[]){
+void RGBled::lightLED(int color[]){
   for (byte i = 0; i < 3; ++i){
     PORTB = (PORTB & B11111100) | i;
     setDutyCycle(color[i]);
+    delay(100);
   }//end  of switching loop
   
 }// end of the function

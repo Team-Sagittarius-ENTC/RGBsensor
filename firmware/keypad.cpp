@@ -1,60 +1,35 @@
 #include "keypad.h"
 
-Keypad::Keypad(byte pin){
-  key = pin; //Assigne private key to pin
-}// end of the constructor
 
-void Keypad::decode_(){
-  if (keypad< 410 ){
-    inputString +="3";
-  }
-  else if (keypad < 435){
-    inputString +="6";
-  }
-  else if (keypad < 455){
-    inputString +="9";
-  }
-  else if (keypad < 480){
-    inputString +="#";
-  }
-  else if (keypad < 580){
-    inputString +="2";
-  }
-  else if (keypad < 620){
-    inputString +="5";
-  }
-  else if (keypad < 660){
-    inputString +="8";
-  }
-  else if (keypad < 720){
-    inputString +="0";
-  }
-  else if (keypad < 800){
-    inputString +="1";
-  }
-  else if (keypad < 880){
-    inputString +="4";
-  }
-  else if (keypad < 960){
-    inputString +="7";
-  }
-  else {
-    inputString +="*";
-  }
-}//end of the decode function
+Keypad::Keypad(){
+  //set D4 - D7 output pins
+  DDRD = DDRD | 0b11110000;
+  // set PB3 - PB5 inputs
+  DDRB = DDRB & 0b11000111;
+}// end of keypad
 
-String Keypad::get_keys(byte length_ = 1){
-  inputString = ""; // empty the input string
-  while (inputString.length() < length_){
+String Keypad::read_key(bool halt = true){
+  while (true){
+    
+    for(byte i = 0; i < 4; ++i){
+      PORTD = (PORTD & 0b00001111) | (1 << i + 4); //switching between 4 lines
+      delay(1);
+      
+      val = ((0b00111000 & PINB) >> 3);
+      if (val > 0){
+        val = log(val) / log(2);
+        //halt until release key
+        while((0b00111000 & PINB) >> 3);
 
-    keypad = analogRead(A3);
-    delay(1);
+        PORTD = (PORTD & 0b00001111);
+        return keys[i][val];
+      }// end of if val > 0
+      
+    }//end of for loop
 
-    if (keypad > 0){
-      decode_();
-      // remember to ad a delay
-      while (analogRead(key)>0){}
-    }
-  }// end of main while loop
-  return inputString;
-}// end of the gey keys function
+    if(!halt) break;
+    
+  }//end of while loop
+
+  return "";
+}// end of function

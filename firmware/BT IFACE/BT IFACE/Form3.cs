@@ -29,7 +29,7 @@ namespace BT_IFACE
                 //start Reading thread
                 _continue = true;
                 SerialReadThread = new Thread(SerialRead);
-                SerialReadThread.IsBackground = true; // run in the background
+                SerialReadThread.IsBackground = false; // run in the background
                 SerialReadThread.Start();
             }
             else
@@ -37,6 +37,12 @@ namespace BT_IFACE
                 tbColor.Text = "No Connection!";
                 EnableDisapleOptions(false);
             }
+        }
+
+        private void Form3_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        { 
+            _continue = false;
+            Thread.Sleep(200);
         }
 
         private void EnableDisapleOptions(bool status)
@@ -57,12 +63,20 @@ namespace BT_IFACE
                     _serialport.DtrEnable = true;
                     firstRound = false;
                 }
-                AppendText(_serialport.ReadLine().ToString());
+                try
+                {
+
+                    AppendText_(_serialport.ReadLine().ToString());
+                }
+                catch (Exception e)
+                {
+                    AppendText_(e.ToString());
+                }
             }
         }
 
         delegate void SetTextCallback(string text);
-        private void AppendText(string text)
+        private void AppendText_(string text)
         {
             try
             {
@@ -71,7 +85,7 @@ namespace BT_IFACE
                 // If these threads are different, it returns true.
                 if (this.tbColor.InvokeRequired)
                 {
-                    SetTextCallback d = new SetTextCallback(AppendText);
+                    SetTextCallback d = new SetTextCallback(AppendText_);
                     this.Invoke(d, new object[] { text });
                 }
                 else
@@ -82,9 +96,7 @@ namespace BT_IFACE
             catch (ObjectDisposedException)
             {
                 // that means this has comes to an end
-                this.tbColor.Text = "Jammed";
                 _continue = false;
-
             }
 
         }
@@ -96,7 +108,7 @@ namespace BT_IFACE
             try
             {
                 string[] RGBS = rawText.Split(',');
-                string[] strings = {"R", "G", "B" };
+                string[] strings = { "R", "G", "B" };
                 int[] rgbs = Array.ConvertAll(RGBS, s => int.Parse(s));
 
                 picColor.BackColor = Color.FromArgb(rgbs[0], rgbs[1], rgbs[2]);
@@ -112,13 +124,14 @@ namespace BT_IFACE
                     for (byte i = 0; i < 3; ++i)
                         result += getSpaces(2 - rgbs[i].ToString("X").Length, "0") + rgbs[i].ToString("X");
                 }
-            }
-            catch (FormatException)
-            {
 
+
+                return result;
             }
-            
-            return result;
+            catch (Exception e)
+            {
+                return e.ToString();
+            } 
         }
 
         private static string getSpaces(int length, string char_)

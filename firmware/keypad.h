@@ -5,20 +5,15 @@
 
 class Keypad{
   private:
-    byte key {};
-    short keypad {};
-    String inputString {"Bello"};
-
-    void decode_();
-
-  public:
-    //constructor for the class
-    Keypad(byte pin);
-    String get_keys(byte length_ = 1);
-
+    String keys[4][3] = { {"1", "2", "3"},
+                          {"4", "5", "6"},
+                          {"7", "8", "9"},
+                          {"*", "0", "#"}};
+    byte val = 0;
   
-}; //end of the keypad class
-
-
+  public:
+    Keypad();
+    String read_key(bool halt = true);
+};
 
 #endif

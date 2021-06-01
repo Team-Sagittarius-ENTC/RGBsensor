@@ -1,24 +1,22 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO.Ports;
+using System.Linq;
+using System.Collections.Generic;
 
 namespace BT_IFACE
 {
     public partial class Form1 : Form
     {
         public static SerialPort _serialport;
+        private static List<string> openedForms;
+
         public Form1()
         {
             InitializeComponent();
             initPanels();
             _serialport = new SerialPort();
+            openedForms = new List<string>();
         }
 
         private void initPanels()
@@ -77,6 +75,7 @@ namespace BT_IFACE
 
         private void button4_Click(object sender, EventArgs e)
         {
+            //openChildForm(new FormOpenCon(this, ref _serialport));
             openChildForm(new FormOpenCon(this, ref _serialport));
         }
 
@@ -92,6 +91,7 @@ namespace BT_IFACE
 
         private void button6_Click(object sender, EventArgs e)
         {
+            //openChildForm(new Form3(ref _serialport));
             openChildForm(new Form3(ref _serialport));
         }
 
@@ -105,19 +105,14 @@ namespace BT_IFACE
 
         }
 
-        // code for opening form in container panel
-        private Form activeForm = null;
         private void openChildForm(Form childForm)
         {
-            //if the active form is already the selected form we do not need to open it again
-            if (activeForm != childForm) {
-                //close the opened form
-                if (activeForm != null)
-                {
-                    activeForm.Close();
-                }
-
-                activeForm = childForm;
+            if (openedForms.Contains(childForm.Name))
+            {
+                childForm.BringToFront();
+            }
+            else
+            {
                 childForm.TopLevel = false;
                 childForm.FormBorderStyle = FormBorderStyle.None;
                 childForm.Dock = DockStyle.Fill;
@@ -126,8 +121,11 @@ namespace BT_IFACE
                 childForm.BringToFront();
                 childForm.Show();
 
-            }// end of if
+                openedForms.Add(childForm.Name);
+
+            }
         }
+
 
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
