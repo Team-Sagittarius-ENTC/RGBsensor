@@ -25,7 +25,7 @@ class Keypad
 
         while(row<=4)
         {
-          //powering the only needing row
+          //powering the only selected row
           PORTD &= 0b00001111;
           PORTD |= (1<<(4+row-1));
           byte col=1;
