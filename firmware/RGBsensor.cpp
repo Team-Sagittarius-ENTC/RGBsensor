@@ -62,7 +62,7 @@ int *RGBsensor::readColor(bool calibrate = false){
   */
 
   // to increase the sensiviry of green and blue increase multiply it with a scalar
-  float ratio[3] {1, 1.13517, 1.19640};
+  float ratio[3] {1, 0.9285, 0.6316};
   for(byte i = 0; i < 3; ++i) color[i] = analogRead(Sensor[i]) * ratio[i]; // reading the raw color
 
   if (calibrate){
@@ -71,11 +71,12 @@ int *RGBsensor::readColor(bool calibrate = false){
   
   else{
    //regression here
-   inverseRegression();
+   //inverseRegression();
    //mapout the colort
-   
+   int mins[3] = {197,222,252};
+   int maxs[3] = {704, 634, 533};
    for(byte i = 0; i < 3; ++i){
-      color[i] = map(color[i], 300, 890, 5, 250);
+      color[i] = map(color[i], mins[i], maxs[i], 5, 250);
       if(color[i] >= 255) color[i] = 255;
       else if (color[i] <= 0) color[i] = 0;
    } 
@@ -91,10 +92,8 @@ void RGBsensor::displayColor(int *tcolor){
     In various times we want to display the readed color.
     By calling this function we can show the values in color variable
   */
-  for(byte i = 0; i < 3; ++i) {
-    Serial.print(tcolor[i]);
-    Serial.print(i == 2 ? "\n" : ",");
-  }
+  Serial.println(String(tcolor[0]) + "," + String(tcolor[1]) + "," + String(tcolor[2]));
+  
 }// end of the displayColor method
 
 // Sensor Calibration Method

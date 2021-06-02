@@ -125,7 +125,7 @@ int* Display::colorInputDisplay(){
 
   for(byte i = 0; i < 3; ++i){
     Serial.print(color[i]);
-    Serial.print(i == 2 ? "\n" : ",");
+    Serial.print(i == 2 ? "\r\n" : ",");
   }
 
   while(keypad.read_key(false) == ""){
