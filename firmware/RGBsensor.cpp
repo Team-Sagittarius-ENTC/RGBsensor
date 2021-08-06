@@ -92,7 +92,7 @@ void RGBsensor::displayColor(int *tcolor){
     In various times we want to display the readed color.
     By calling this function we can show the values in color variable
   */
-  Serial.println(String(tcolor[0]) + "," + String(tcolor[1]) + "," + String(tcolor[2]));
+  Serial.println(String(tcolor[2]) + "," + String(tcolor[1]) + "," + String(tcolor[0]));
   
 }// end of the displayColor method
 

@@ -20,7 +20,7 @@ class Display{
       int  color[3]{};
       byte keypadPin;
       String tempInput = "";
-      byte ldrPins[3] = {A2, A1, A0};
+      byte ldrPins[3] = {A2, A1, A1};
       Keypad keypad;
       RGBled theLed;
 
