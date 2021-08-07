@@ -13,7 +13,7 @@ class Keypad
       PORTB |= 0b00100000;
     }
     
-    char popKeyPress()
+    char WaitAndPopKeyPress()
     {
       byte pressedRow;
       byte pressedCol;
