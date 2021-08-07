@@ -19,16 +19,15 @@ class RGBsensor{
     int  color[3]{};  // this is the ptr array to process all the color data
     
     const double PROGMEM RGC[3][3]{ //regression constants
-      { 636001.0376489708 , 165409.19316159718 , 0.1}, // for red
-      { 0.0307475033803342 , 83.38789385867578 , 1.5}, // for green
-      { 0.036533711170305024 , 850560.6621504327 , 1.2}, // for blue
+      {0.0007179, -0.298761, 4.15205},
+      {0.0003251, 0.282137, -110.862},
+      {0.0002248, 0.339544, -86.8318}
     };
-    double RCONSTS[3] = { -2115106.925056781 , 52.7447217477211 , -476682.09714456595 }; // vertical adjustment
     
 
     
     void procRegression(int16_t avg);
-    void inverseRegression();
+    int inverseRegression(int input, byte ref);
     //void sensor(bool stat);
     
   public:
