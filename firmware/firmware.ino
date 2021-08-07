@@ -40,7 +40,7 @@ void loop(){
         case 2:
           Sensor.sensor(1);
           while(keypad.read_key(false) == ""){
-            color = Sensor.readColor(true);
+            color = Sensor.readColor();
             Lcd.printLiveSense(color);
             Sensor.displayColor(color);
             delay(200);
@@ -70,7 +70,7 @@ void loop(){
             color = Sensor.readColor();
             Lcd.printLiveSense(color);
             Sensor.displayColor(color);
-            delay(200);
+            delay(20);
           }
           Sensor.sensor(0);
         break;

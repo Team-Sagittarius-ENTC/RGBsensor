@@ -33,21 +33,22 @@ void RGBsensor::procRegression(int16_t avg){
     Will return calculated RGB values for given average value
     This function will used to find optimized regression constants
   */
-  // set color to calculated regressions
-  for(byte i = 0; i < 3; ++i)color[i] = RGC[i][0] * pow(avg + RGC[i][1], RGC[i][2]) + RCONSTS[i];
 }//end of regressingpric
 
-void RGBsensor::inverseRegression(){
+int RGBsensor::inverseRegression(int input, byte ref){
   /*
     This is the function to do the reverse of procRegression function.
     This function will find the corresponting average value it came from using readed value
     The function will take the values in color variable and replace it with
     the result by inverse regression
   */
-  
-  for (byte i = 0; i < 3; ++i){
-    color[i] = pow( (double(color[i]) - RCONSTS[i]) / RGC[i][0], 1 / RGC[i][2] ) - RGC[i][1];
-  }
+   int output = RGC[ref][0]*input*input + RGC[ref][1]*input + RGC[ref][2];
+
+  if(output < 0) output = 0;
+  else if(output > 255) output = 255;
+
+  return output;
+
 }//end of the inverse regression
 
 // Sensor read color method
@@ -61,26 +62,16 @@ int *RGBsensor::readColor(bool calibrate = false){
               : set this to false if want with all processing
   */
 
-  // to increase the sensiviry of green and blue increase multiply it with a scalar
-  float ratio[3] {1, 1.13517, 1.19640};
-  for(byte i = 0; i < 3; ++i) color[i] = analogRead(Sensor[i]) * ratio[i]; // reading the raw color
+  for(byte i = 0; i < 3; ++i) color[i] = analogRead(Sensor[i]);// reading the raw color
 
   if (calibrate){
     return color;
   }// end of calibration if statement
   
   else{
-   //regression here
-   inverseRegression();
-   //mapout the colort
-   
-   for(byte i = 0; i < 3; ++i){
-      color[i] = map(color[i], 300, 890, 5, 250);
-      if(color[i] >= 255) color[i] = 255;
-      else if (color[i] <= 0) color[i] = 0;
-   } 
-   
-   
+   //inverseRegression();
+   for(byte i = 0; i < 3; ++i) color[i] = inverseRegression(color[i], 2-i);// reading the raw color
+
    return color;
   }// end of if else statement
 }//end of the read color function
@@ -91,10 +82,8 @@ void RGBsensor::displayColor(int *tcolor){
     In various times we want to display the readed color.
     By calling this function we can show the values in color variable
   */
-  for(byte i = 0; i < 3; ++i) {
-    Serial.print(tcolor[i]);
-    Serial.print(i == 2 ? "\n" : ",");
-  }
+  Serial.println(String(tcolor[2]) + "," + String(tcolor[1]) + "," + String(tcolor[0]));
+  
 }// end of the displayColor method
 
 // Sensor Calibration Method
@@ -183,9 +172,6 @@ void RGBsensor::calibrate(Display Lcd, bool compare = false){
     }
   }// end of if
   
-
-  //correct the regression constant
-  for(byte i = 0; i < 3; ++i) RCONSTS[i] += double(samples[0][i]) / 3;
 
   sensor(0); // turning of the sensor
 }// end of calibration function

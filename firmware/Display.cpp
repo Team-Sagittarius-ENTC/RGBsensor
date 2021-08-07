@@ -125,7 +125,7 @@ int* Display::colorInputDisplay(){
 
   for(byte i = 0; i < 3; ++i){
     Serial.print(color[i]);
-    Serial.print(i == 2 ? "\n" : ",");
+    Serial.print(i == 2 ? "\r\n" : ",");
   }
 
   while(keypad.read_key(false) == ""){
@@ -139,7 +139,7 @@ void Display::printLiveSense(int color_[]){
 
   lcd.clear();
   lcd.print("R: ");
-  lcd.print(color_[0]);
+  lcd.print(color_[2]);
 
   lcd.setCursor(8, 0);
   lcd.print("G: ");
@@ -147,7 +147,7 @@ void Display::printLiveSense(int color_[]){
 
   lcd.setCursor(0, 1);
   lcd.print("B: ");
-  lcd.print(color_[2]);
+  lcd.print(color_[0]);
 
   
 }
