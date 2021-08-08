@@ -1,0 +1,13 @@
+Output: NC Drill Files
+Type  : NC Drill
+From  : Project [EGB_Sensor.PrjPcb]
+   Generated File[RGB_pcb.TXT]
+   Generated File[RGB_pcb-RectHoles.TXT]
+   Generated File[RGB_pcb.LDP]
+   Generated File[RGB_pcb.DRR]
+
+
+Files Generated   : 4
+Documents Printed : 0
+
+Finished Output Generation At 9:43:44 AM On 7/3/2021

@@ -1,0 +1,3 @@
+Layer Pairs Export File for PCB: E:\codes_projects\Altium\EGB_Sensor\RGB_pcb.PcbDoc
+LayersSetName=Top_Bot_Thru_Holes|DrillFile=rgb_pcb.txt|DrillLayers=gtl,gbl
+LayersSetName=Top_Bot_Rect_Holes|DrillFile=rgb_pcb-rectholes.txt|DrillLayers=gtl,gbl
