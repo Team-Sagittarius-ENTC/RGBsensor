@@ -57,7 +57,7 @@ void Display::printRGBMenu(){
   printMsg("2: Real Time", 0, 1);
 }// end of the printSensorMenu() function
 
-int Display::inputColor(byte positionx, byte positiony){
+int Display::inputColor(byte positionx, byte positiony, Keypad keypad){
   tempInput = ""; //clearing the tempInput
   String letter;
 
@@ -103,21 +103,21 @@ int Display::inputColor(byte positionx, byte positiony){
   }// end of the while loop
 }// end of the input color function
 
-int* Display::colorInputDisplay(){
+int* Display::colorInputDisplay(Keypad keypad){
   lcd.clear();
   lcd.print("R: ");
   lcd.blink();
-  color[0] = inputColor(3, 0);
+  color[0] = inputColor(3, 0, keypad);
 
   lcd.setCursor(8, 0);
   lcd.print("G: ");
   lcd.blink();
-  color[1] = inputColor(11, 0);
+  color[1] = inputColor(11, 0, keypad);
 
   lcd.setCursor(0, 1);
   lcd.print("B: ");
   lcd.blink();
-  color[2] = inputColor(3, 1);
+  color[2] = inputColor(3, 1, keypad);
   lcd.noBlink();
 
   lcd.setCursor(8, 1);
