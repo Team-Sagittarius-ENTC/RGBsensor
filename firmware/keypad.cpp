@@ -12,7 +12,7 @@ String Keypad::read_key(bool halt = true){
   while (true){
     
     for(byte i = 0; i < 4; ++i){
-      PORTD = (PORTD & 0b00001111) | (1 << i + 4); //switching between 4 lines
+      PORTD = (PORTD & 0b00001111) | (1 << (i + 4)); //switching between 4 lines
       delay(1);
       
       val = ((0b00111000 & PINB) >> 3);

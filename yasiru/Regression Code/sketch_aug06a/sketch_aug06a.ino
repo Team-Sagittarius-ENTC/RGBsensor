@@ -1,16 +1,17 @@
 
-float raw_data[9][4] = {{0  , 4.15, 2.98, 2.27},
-                      {32 , 4.80, 3.49, 2.83},
-                      {64 , 5.56, 4.15, 3.56},
-                      {96 , 6.45, 4.98, 4.48},
-                      {128, 6.70, 5.25, 4.79},
-                      {160, 7.15, 5.70, 5.27},
-                      {192, 7.50, 6.10, 5.75},
-                      {224, 8.06, 6.77, 6.49},
-                      {256, 8.34, 7.14, 6.94}};
+float raw_data[9][4] = {
+    {0   , 4.36, 2.76, 2.34},
+    {31  , 4.93, 3.22, 2.90},
+    {63  , 5.68, 3.86, 3.66},
+    {95  , 6.55, 4.71, 4.59},
+    {127 , 6.79, 4.98, 4.90},
+    {159 , 7.21, 5.45, 5.39},
+    {191 , 7.56, 5.86, 5.85},
+    {223 , 8.11, 6.55, 6.56},
+    {255 , 8.35, 6.90, 6.92}
+                      };
 
 float coeff_mat[3][3] {};
-
 float RGC[3][3] {};
 
 /*This function will return the minor matrix with signs for given coordinate*/
@@ -97,27 +98,30 @@ void regression(){
     /*Matrix multiplication and add to RGC matrix*/
     for(byte i = 0; i < 3; ++i){
       for(byte k = 0; k < 3; ++k){
-        RGC[m][i] += (inv[i][k] * ans[k]);
-        Serial.print("Hello");
+        RGC[m-1][i] += (inv[i][k] * ans[k]);
       }
     }
 
+  
   }// enf of the main for loop  
 }// end of regression
 
+
 void setup(){
-  Serial.begin(9600);  
+  Serial.begin(9600);
+  Serial.println("Just Started!!!");
   regression();
-
-  for(byte i = 0; i < 3; ++i){
-  for(byte k = 0; k < 3; ++k){
-    Serial.print(RGC[i][k]);
-    Serial.print(k==2 ? "\n" : "\t"); 
-  }
-  }
-
+  
+    for(byte i = 0; i < 3; ++i){
+    for(byte k = 0; k < 3; ++k){
+      Serial.print(RGC[i][k]);
+      Serial.print(k==2 ? "\n" : "\t"); 
+    }
+    }
+    Serial.println("\n\n");
 }
 
 void loop(){
-  
+  //Serial.println("Hellooooooooo");
+  //Serial.println(RGC[0][0]);
 }

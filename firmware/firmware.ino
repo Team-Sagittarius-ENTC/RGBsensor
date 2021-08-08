@@ -1,7 +1,8 @@
-#include "RGBsensor.h"
 #include "keypad.h"
-#include "RGBled.h"
+#include "RGBsensor.h"
 #include "Display.h"
+#include "RGBled.h"
+
 
 
 byte ldrPins[3] = {A2, A1, A0};
@@ -34,7 +35,7 @@ void loop(){
       switch(keypad.read_key().toInt()){
         case 1:
           // this is the point where we calibrate the sensor
-          Sensor.calibrate(Lcd);
+          Sensor.calibrate(Lcd, keypad);
         break;
 
         case 2:
@@ -60,7 +61,7 @@ void loop(){
       Lcd.printRGBMenu();
       switch(keypad.read_key().toInt()){
         case 1:
-          color = Lcd.colorInputDisplay(); // inputing the color from the keypad
+          color = Lcd.colorInputDisplay(keypad); // inputing the color from the keypad
           
         break;
 
