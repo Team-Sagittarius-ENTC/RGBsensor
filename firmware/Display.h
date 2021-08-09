@@ -21,7 +21,6 @@ class Display{
       byte keypadPin;
       String tempInput = "";
       byte ldrPins[3] = {A2, A1, A1};
-      Keypad keypad;
       RGBled theLed;
 
       int inputColor();
@@ -32,14 +31,14 @@ class Display{
 
       // Define public messages
       void printMsg(String message, byte alignment = 0, bool line = 0);
-      int inputColor(byte positionx, byte positiony);
+      int inputColor(byte positionx, byte positiony, Keypad keypad);
 
       // define menus
       void printMainMenu();
       void printSensorMenu();
       void printRGBMenu();
       void clear_();
-      int* colorInputDisplay();
+      int* colorInputDisplay(Keypad keypad);
       void printLiveSense(int color_[]);
 };
 

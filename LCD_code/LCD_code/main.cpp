@@ -13,28 +13,50 @@
 
 void toggleEnable(){
 	//toggling Enable
-	PORTC = PORTC | 0b00000100;
+	PORTD = PORTD | 0b00001000;
 	_delay_ms(1);
-	PORTC = PORTC & 0b11111011;
-}
+	PORTD = PORTD & 0b11110111;
+} // end of the toggle enable 
 
 void initLCD(){
-	// E, RW, RS
-	PORTC = PORTC & 0b11111000;
+	// E, RS
+	PORTD = PORTD & 0b11110011;
 		
 	// initializing the display
 		
 	//display clear
-	PORTB = 0b00000001;
+	PORTD &= 0b00001111;
+	PORTD |= 0b00000000;
 	toggleEnable();
+	
 	//function set
-	PORTB = 0b00111000;
+	PORTD &= 0b00001111;
+	PORTD |= 0b00100000;
 	toggleEnable();
+	
+	//function set
+	PORTD &= 0b00001111;
+	PORTD |= 0b00100000;
+	toggleEnable();
+	PORTD &= 0b00001111;
+	PORTD |= 0b10000000;
+	toggleEnable();
+	
 	//display on of control
-	PORTB = 0b00001111;
+	PORTD &= 0b00001111;
+	PORTD |= 0b00000000;
 	toggleEnable();
+	PORTD &= 0b00001111;
+	PORTD |= 0b11110000;
+	toggleEnable();
+	
+	
 	//entry mode set
-	PORTB = 0b00000110;
+	PORTD &= 0b00001111;
+	PORTD |= 0b00000000;
+	toggleEnable();
+	PORTD &= 0b00001111;
+	PORTD |= 0b01100000;
 	toggleEnable();
 	
 }
@@ -51,14 +73,32 @@ void print(const char Message[], uint8_t size_){
 }
 
 void setCursor(uint8_t x, uint8_t y){
-	PORTC &= 0b11111000;
-	PORTB = 0b10000000 | (x + 64*y);
+	// E, RS
+	PORTD = PORTD & 0b11110011;
+	
+	short temp = 0b10000000 | (x + 64*y);
+	
+	PORTD &= 0b00001111;
+	PORTD = PORTD | (temp & 0b11110000);
+	toggleEnable();
+	
+	PORTD &= 0b00001111;
+	PORTD = PORTD | ((temp & 0b00001111) << 4);
 	toggleEnable();
 }
 
 void clear(){
-	PORTC &= 0b11111000;
-	PORTB = 0b00000001;
+	// E, RS
+	PORTD = PORTD & 0b11110011;
+	
+	
+	//display clear
+	PORTD &= 0b00001111;
+	PORTD |= 0b00000000;
+	toggleEnable();
+	//display clear
+	PORTD &= 0b00001111;
+	PORTD |= 0b00000000;
 	toggleEnable();
 }
 
@@ -66,24 +106,10 @@ int main(void)
 {
     
 	//define the data direction
-	DDRB = 0b11111111;
-	DDRC |= 0b00000111;
+	DDRD = DDRD | 0b00111111; 
 	
-	
-	
-	
-	// initializing the display
-	initLCD();
-	
-	setCursor(2, 0);
-	print("Hello There", 6);
-	
-	_delay_ms(2000);
-	clear();
-	
-	setCursor(0, 1);
-	print("Good Bye", 8);
-	
+	initLCD(); // initializing the LCD display
+	setCursor(2, 1);
 	
 	while(1){}
 }// end of the main program
