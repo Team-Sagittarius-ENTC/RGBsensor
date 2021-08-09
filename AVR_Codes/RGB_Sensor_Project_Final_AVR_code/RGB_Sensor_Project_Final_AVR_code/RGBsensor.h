@@ -16,7 +16,7 @@
 // this is the main class for the RGB sensor
 class RGBsensor{
   private:
-    byte Sensor[3]{}; // this is the RGB ldr pins
+    short Sensor[3]{}; // this is the RGB ldr pins
     int  color[3]{};  // this is the ptr array to process all the color data
     float coeff_mat[3][3] {}; // this is the coefficiant matrix which uses to calculate RGCs
 
@@ -33,24 +33,24 @@ class RGBsensor{
     }; // this array will use the store sensored data for the callibration purposes
     
     float RGC[3][3]{ //regression constants
-      {6.5529613039948345, -21.70716070508206, -10.88222916702216},
-      {1.4848949805768825, 46.67373805102034, -119.51068638392826},
-      {2.514421337210365, 31.627137726753972, -72.78155680513919 }
+      {7.179, -29.8761, 4.15205},
+      {3.251, 28.2137, -110.862},
+      {2.248, 33.9544, -86.8318}
     };
 
 
     
 
-    float minor(byte i, byte j); // this function is to find the minor matrixes (inverse matrix)
+    float minor(short i, short j); // this function is to find the minor matrixes (inverse matrix)
 
-    void update_coeff(byte ref_); // this function is to update the cofficiant matrix 
+    void update_coeff(short ref_); // this function is to update the cofficiant matrix 
     
     void procRegression(); // this is the function to process the regression
     
-    int inverseRegression(int input, byte ref); // this is the function to invert the regression
+    int inverseRegression(int input, short ref); // this is the function to invert the regression
     
   public:
-    RGBsensor(byte tSensor[]); // this is the constructor for the sensor
+    RGBsensor(short tSensor[]); // this is the constructor for the sensor
     
     int *readColor(bool calibrate = false); //this is the read colot method
 
@@ -59,6 +59,12 @@ class RGBsensor{
     void displayColor(int *tcolor); // this function will display the color in the serial monitor
 
     void sensor(bool stat); // this function is used to control the sensor
+	
+	void startConversion();
+	
+	void setup_ADC(short pin);
+	
+	int analogRead_(short pin);
 
 }; // end of the RGBsensor Class
 

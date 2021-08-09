@@ -22,11 +22,13 @@ void setup(){
   Lcd.printMsg("Welcome !!", 1, 0);
   Lcd.printMsg("Team Sagittarius", 1, 1);
   delay(500);
+
   
 }// end of the void setup function
 
 void loop(){
   Lcd.printMainMenu();
+  
   switch(keypad.read_key().toInt()){
     case 1:
 

@@ -1,7 +1,15 @@
+/*
+ * Display.cpp
+ *
+ * Created: 8/9/2021 9:59:25 AM
+ *  Author: ASUS
+ */ 
+
 #include "Display.h"
 #include "keypad.h"
 #include "RGBled.h"
-#include <Arduino.h>
+
+#include <util/_delay_ms.h>
 
 Display::Display(){
   //define the data direction
@@ -12,7 +20,7 @@ Display::Display(){
 void Display::toggleEnable(){
   //toggling Enable
   PORTD = PORTD | 0b00001000;
-  delay(1);
+  _delay_ms(1);
   PORTD = PORTD & 0b11110111;
 } // end of the toggle enabl
 
@@ -100,7 +108,7 @@ void Display::print_(String message){
   char charArr[30] {}; // empty array
   message.toCharArray(charArr, message.length()+1); //converting message to an array
   
-  for (byte i = 0; i < message.length(); ++i){
+  for (short i = 0; i < message.length(); ++i){
 
     PORTD &= 0b00001111; //clearing out needed space
     PORTD = PORTD | (charArr[i] & 0b11110000); // send first 4 bits
@@ -136,7 +144,7 @@ void Display::blink_(bool status_){
   }
 }// end of the blink_ function
 
-void Display::printMsg(String message, byte alignment, bool line){
+void Display::printMsg(String message, short alignment, bool line){
   /*
     Left = 0
     Center = 1
@@ -182,7 +190,7 @@ void Display::printRGBMenu(){
   printMsg("2: Real Time", 0, 1);
 }
 
-int Display::inputColor(byte positionx, byte positiony, Keypad keypad){
+int Display::inputColor(short positionx, short positiony, Keypad keypad){
   tempInput = ""; //clearing the tempInput
   String letter;
 
@@ -195,12 +203,12 @@ int Display::inputColor(byte positionx, byte positiony, Keypad keypad){
       if (tempInput.toInt() > 255){
         // clear the whole value
         setCursor_(positionx, positiony);
-        for(byte i = 0; i < tempInput.length(); ++i) print_(" ");
+        for(short i = 0; i < tempInput.length(); ++i) print_(" ");
 
         // print the error message
         setCursor_(positionx, positiony);
         print_("ERR");
-        delay(500); // wait until user sees it
+        _delay_ms(500); // wait until user sees it
         
         setCursor_(positionx, positiony); // going back again
         print_("   ");
@@ -250,10 +258,6 @@ int* Display::colorInputDisplay(Keypad keypad){
   setCursor_(8, 1);
   print_("Done!");
 
-  for(byte i = 0; i < 3; ++i){
-    Serial.print(color[i]);
-    Serial.print(i == 2 ? "\r\n" : ",");
-  }
 
   while(keypad.read_key(false) == ""){
     theLed.lightLED(color);
