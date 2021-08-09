@@ -22,6 +22,8 @@ void setup(){
   Lcd.printMsg("Welcome !!", 1, 0);
   Lcd.printMsg("Team Sagittarius", 1, 1);
   delay(500);
+
+  while(1);
   
 }// end of the void setup function
 
