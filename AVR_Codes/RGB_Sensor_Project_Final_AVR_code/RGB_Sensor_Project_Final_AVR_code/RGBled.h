@@ -1,6 +1,6 @@
 #ifndef rgbled_definition
 #define rgbled_definition
-#include <Arduino.h>
+#include <util/_delay_ms.h>
 
 class RGBled
 {

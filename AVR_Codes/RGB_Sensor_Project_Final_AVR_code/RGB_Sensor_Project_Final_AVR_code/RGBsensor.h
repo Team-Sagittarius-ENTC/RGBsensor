@@ -9,7 +9,7 @@
 #ifndef RGBsensorFunctions
 #define RGBsensorFunctions
 
-#include <Arduino.h>
+#include <util/_delay_ms.h>
 #include "Display.h"
 #include "keypad.h"
 

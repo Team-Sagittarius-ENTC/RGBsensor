@@ -1,5 +1,5 @@
 #include "RGBled.h"
-#include <Arduino.h>
+#include <util/_delay_ms.h>
 RGBled::RGBled()
 {
 	//setting B:0,1,2 to output
@@ -47,9 +47,9 @@ void RGBled::setDutyCycle(short dutyVal)
 
 void RGBled::lightLED(int color[]){
 	for (short i = 0; i < 3; ++i){
-		PORTB = (PORTB & B11111100) | i;
+		PORTB = (PORTB & 0B11111100) | i;
 		setDutyCycle(color[i]);
-		_delay_ms(100);
+		_delay_ms(1);
 	}//end  of switching loop
 	
 }// end of the function
