@@ -231,11 +231,11 @@ void RGBsensor::calibrate(Display Lcd, Keypad keypad){
 
   for(short i = 0; i < 9; ++i){
     
-    Lcd.printMsg("Capture -> " + String(raw_data[i][0]));
+    Lcd.printMsg("Capture -> " + char*(raw_data[i][0]));
     
     while (keypad.read_key(false) != "#"){
       readColor(true);
-      Lcd.printMsg(String(color[0]) + ", " + String(color[1]) + ", " + String(color[2]), 0, true); // printing the color      
+      Lcd.printMsg(char*(color[0]) + ", " + char*(color[1]) + ", " + char*(color[2]), 0, true); // printing the color      
     }//Halt and don't read untill press the key
   
     readColor(true); // read the color

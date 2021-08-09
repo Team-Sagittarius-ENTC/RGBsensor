@@ -22,7 +22,7 @@ void Display::toggleEnable(){
   PORTD = PORTD | 0b00001000;
   _delay_ms(1);
   PORTD = PORTD & 0b11110111;
-} // end of the toggle enabl
+} // end of the toggle enable
 
 void Display::initLCD(){
   // E, RS
@@ -97,25 +97,22 @@ void Display::clear_(){
   toggleEnable();
 }// end of the clear function
 
-void Display::print_(String message){
+void Display::print_(char* message){
   // LCD Printing method
 
   /*Set register select to 1 and Enable pin to 0*/
   PORTD = PORTD & 0b11110011;
   PORTD = PORTD | 0b00000100;
 
-
-  char charArr[30] {}; // empty array
-  message.toCharArray(charArr, message.length()+1); //converting message to an array
   
-  for (short i = 0; i < message.length(); ++i){
+  for (short i = 0; i < strlen(message); ++i){
 
     PORTD &= 0b00001111; //clearing out needed space
-    PORTD = PORTD | (charArr[i] & 0b11110000); // send first 4 bits
+    PORTD = PORTD | (message[i] & 0b11110000); // send first 4 bits
     toggleEnable();
     
     PORTD &= 0b00001111;
-    PORTD = PORTD | ((charArr[i] & 0b00001111) << 4); // send 2nd 4 bits
+    PORTD = PORTD | ((message[i] & 0b00001111) << 4); // send 2nd 4 bits
     toggleEnable();
     
   }// end of the for loop
@@ -144,7 +141,7 @@ void Display::blink_(bool status_){
   }
 }// end of the blink_ function
 
-void Display::printMsg(String message, short alignment, bool line){
+void Display::printMsg(char* message, short alignment, bool line){
   /*
     Left = 0
     Center = 1
@@ -152,16 +149,16 @@ void Display::printMsg(String message, short alignment, bool line){
   */
   switch(alignment){
     case 0:
-      setCursor_(0,int(line));
+      setCursor_(0, line);
     break;
     
     case 1:
       // Case 1 is for centering
-      setCursor_((16 - message.length()) / 2, int(line));
+      setCursor_((16 - strlen(message)) / 2, line);
     break;
 
     case 2:
-      //dosomething
+      //do something
     break;
 
     
@@ -170,7 +167,7 @@ void Display::printMsg(String message, short alignment, bool line){
 
   print_(message);
   
-}// end of the print Msg function
+}// end of the printMsg function
 
 void Display::printMainMenu(){
   clear_();
@@ -192,7 +189,7 @@ void Display::printRGBMenu(){
 
 int Display::inputColor(short positionx, short positiony, Keypad keypad){
   tempInput = ""; //clearing the tempInput
-  String letter;
+  char letter;
 
   while (true){
     letter = keypad.read_key(); 
@@ -226,7 +223,7 @@ int Display::inputColor(short positionx, short positiony, Keypad keypad){
       setCursor_(positionx + tempInput.length(), positiony); // going back one step
       print_(" "); // clearing the character
       setCursor_(positionx + tempInput.length(), positiony); // going back
-    }// end of backspacing if else staement
+    }// end of backspacing if else statement
     
     else{
       // get inputs and save it to tempInput
@@ -235,7 +232,7 @@ int Display::inputColor(short positionx, short positiony, Keypad keypad){
     } // end of the last else
   }// end of the while loop
   
-}// end of the input COlor functiono
+}// end of the input COlor function
 
 int* Display::colorInputDisplay(Keypad keypad){
   clear_();
@@ -269,13 +266,13 @@ int* Display::colorInputDisplay(Keypad keypad){
 void Display::printLiveSense(int color_[]){
   clear_();
   print_("R: ");
-  print_(String(color_[2]));
+  print_((color_[2]));
 
   setCursor_(8, 0);
   print_("G: ");
-  print_(String(color_[1]));
+  print_((color_[1]));
 
   setCursor_(0, 1);
   print_("B: ");
-  print_(String(color_[0]));
+  print_((color_[0]));
 } // end of the function printLive Sense
