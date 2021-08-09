@@ -69,7 +69,7 @@ void update_coeff(byte ref_, byte itter = 9){
 
 
 //Regression processor
-void procRegression(){
+void procRegression(byte itter = 9){
   float ans[3]{};
   float inv[3][3]{};
   float SIG_x = 0;
@@ -89,28 +89,10 @@ void procRegression(){
     }
 
     ans[0] = SIG_x; ans[1] = SIG_xy; ans[2] = SIG_xy2; /*Create the answer matrix*/
-    update_coeff(m, 9); /*Update coefficiant matrix*/
-
-    Serial.print("Answer Matrixes\n--------------------\n");
-    for(byte i = 0; i < 3; ++i){
-      Serial.print(ans[i] + String(", "));
-    }
-    Serial.println("\n\n");
-
-
-    Serial.print("Coefficiant Matrixes\n--------------------\n");
-    for(byte i = 0; i < 3; ++i){
-    for(byte k = 0; k < 3; ++k){
-      Serial.print(coeff_mat[i][k]);
-      Serial.print(k==2 ? "\n" : " \t"); 
-    }
-    }
-    Serial.println("\n\n");
+    update_coeff(m, itter); /*Update coefficiant matrix*/
 
     /*Finding the inverse of the matrix*/
     det = coeff_mat[0][0] * minor(0,0) + coeff_mat[0][1] * minor(0,1) + coeff_mat[0][2] * minor(0,2);
-
-    Serial.println("Determinant -> " + String(det));
     
     for(byte i = 0; i < 3; ++i){
       for(byte k = 0; k < 3; ++k){
@@ -125,15 +107,6 @@ void procRegression(){
         RGC[m-3][i] += (inv[i][k] * ans[k]);
       }
     }
-
-    Serial.print("Inverse Matrixes\n--------------------\n");
-    for(byte i = 0; i < 3; ++i){
-    for(byte k = 0; k < 3; ++k){
-      Serial.print(inv[i][k]);
-      Serial.print(k==2 ? "\n" : " \t"); 
-    }
-    }
-    Serial.println("\n\n");
   
   }// enf of the main for loop  
 }//end of regressingpric
@@ -143,7 +116,15 @@ void procRegression(){
 void setup(){
   Serial.begin(9600);
   Serial.println("Just Started!!!");
-  procRegression();
+
+
+  for(byte i = 0; i < 3; ++i){
+    for(byte k = 0; k < 3; ++k){
+      RGC[i][k] = 0;
+    }
+    }
+  
+  procRegression(9);
   
     for(byte i = 0; i < 3; ++i){
     for(byte k = 0; k < 3; ++k){
