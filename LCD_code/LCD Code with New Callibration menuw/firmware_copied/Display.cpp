@@ -157,7 +157,7 @@ int* Display::colorInputDisplay(Keypad keypad, bool halt){
   return color;
 }
 
-void Display::printLiveSense(int color_[]){
+void Display::printLiveSense(int color_[], bool RGB){
 
   lcd.clear();
   lcd.print("R: ");
@@ -171,5 +171,12 @@ void Display::printLiveSense(int color_[]){
   lcd.print("B: ");
   lcd.print(color_[0]);
 
+  for(byte i = 0; i<3; ++i){
+    temp[i] = color_[2-i];
+  }
+
+  if(RGB){
+    theLed.lightLED(temp);
+  }
   
 }

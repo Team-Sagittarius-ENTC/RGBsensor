@@ -22,7 +22,7 @@ class Display{
       String tempInput = "";
       byte ldrPins[3] = {A2, A1, A1};
       RGBled theLed;
-
+      int temp[3]{};
       int inputColor();
       
     public:
@@ -44,7 +44,7 @@ class Display{
       void setCursor_(byte x, byte y);
       void print_(String data);
       int* colorInputDisplay(Keypad keypad, bool halt = true);
-      void printLiveSense(int color_[]);
+      void printLiveSense(int color_[], bool RGB=false);
 };
 
 #endif

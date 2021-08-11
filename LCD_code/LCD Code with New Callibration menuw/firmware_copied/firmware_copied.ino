@@ -77,17 +77,18 @@ void loop(){
       switch(keypad.read_key().toInt()){
         case 1:
           color = Lcd.colorInputDisplay(keypad); // inputing the color from the keypad
-          
+          Led.offLED();
         break;
 
         case 2:
           Sensor.sensor(1);
           while(keypad.read_key(false) == ""){
             color = Sensor.readColor();
-            Lcd.printLiveSense(color);
+            Lcd.printLiveSense(color, true);
             Sensor.displayColor(color);
-            delay(20);
+//            delay(2000);
           }
+          Led.offLED();
           Sensor.sensor(0);
         break;
 

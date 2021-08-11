@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "ecFQ3QC8kTEZNEu42v+21h/9jUZ/ndNAkbHO/vogruxsDMm9J5nQbCjcLl+1Nzr8y0F6asKdVUT8pckPJzATsw==",
+  "dgSpecHash": "JxnJaLB/3DmQ0YhDdAug6pRCdFgiMzgvQEhU9wji+hS5vB/nBFfkcOqHGtubMmrzQulIacR1L9BjKitJ/7J6+Q==",
   "success": true,
   "projectFilePath": "E:\\UOM Projects\\Lab Project 1\\RGBsensor\\firmware\\BT IFACE\\BT IFACE\\BT IFACE.csproj",
   "expectedPackageFiles": [
@@ -13,10 +13,7 @@
     "C:\\Users\\ASUS\\.nuget\\packages\\runtime.osx-x64.runtime.native.system.io.ports\\5.0.0\\runtime.osx-x64.runtime.native.system.io.ports.5.0.0.nupkg.sha512",
     "C:\\Users\\ASUS\\.nuget\\packages\\system.io.ports\\5.0.1\\system.io.ports.5.0.1.nupkg.sha512",
     "C:\\Users\\ASUS\\.nuget\\packages\\system.security.accesscontrol\\5.0.0\\system.security.accesscontrol.5.0.0.nupkg.sha512",
-    "C:\\Users\\ASUS\\.nuget\\packages\\system.security.principal.windows\\5.0.0\\system.security.principal.windows.5.0.0.nupkg.sha512",
-    "C:\\Users\\ASUS\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\5.0.0\\microsoft.aspnetcore.app.ref.5.0.0.nupkg.sha512",
-    "C:\\Users\\ASUS\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\5.0.0\\microsoft.windowsdesktop.app.ref.5.0.0.nupkg.sha512",
-    "C:\\Users\\ASUS\\.nuget\\packages\\microsoft.netcore.app.ref\\5.0.0\\microsoft.netcore.app.ref.5.0.0.nupkg.sha512"
+    "C:\\Users\\ASUS\\.nuget\\packages\\system.security.principal.windows\\5.0.0\\system.security.principal.windows.5.0.0.nupkg.sha512"
   ],
   "logs": []
 }

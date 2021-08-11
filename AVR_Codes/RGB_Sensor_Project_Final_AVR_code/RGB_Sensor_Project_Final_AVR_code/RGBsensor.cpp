@@ -144,13 +144,13 @@ void RGBsensor::setup_ADC(short pin){
 	//setup the ADMUX register
 	ADMUX = 0b01000000 | pin;
 
-	//Setup Constrol status register of the ADC
+	//Setup Control status register of the ADC
 	// ADC enable
 	// ADC Interrupt enable
-	// Prescallar to 128 th of system clock
+	// Rescale to 128 th of system clock
 	ADCSRA = 0b10001111;
 
-	// Disable digital input budder
+	// Disable digital input buffer
 	DIDR0 = (1 << pin);
 
 	startConversion();
